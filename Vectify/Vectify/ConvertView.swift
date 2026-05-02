@@ -14,7 +14,7 @@ struct ConvertView: View {
                     Task { await model.convertAll() }
                 }
                 .buttonStyle(.borderedProminent)
-                .tint(AppTheme.primary)
+                .tint(AppTheme.primaryContainer)
                 .disabled(!model.canConvert)
             }
 
