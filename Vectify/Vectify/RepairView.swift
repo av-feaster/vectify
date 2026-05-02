@@ -5,6 +5,7 @@ import SwiftUI
 /// Repair workspace aligned with `stitch_svg_vector_toolbox/repair_tool_dark_mode/code.html`.
 struct RepairView: View {
     @Bindable var model: RepairViewModel
+    @Environment(\.presentToast) private var presentToast
 
     private var canRepair: Bool {
         model.folderURL != nil && !model.rows.isEmpty && !model.isRepairing
@@ -63,7 +64,7 @@ struct RepairView: View {
             .opacity(model.folderURL == nil ? 0.45 : 1)
 
             Button {
-                // Reserved for future repair preferences
+                presentToast("Coming soon")
             } label: {
                 Image(systemName: "gearshape")
                     .font(.system(size: 15, weight: .regular))
@@ -71,7 +72,7 @@ struct RepairView: View {
                     .padding(6)
             }
             .buttonStyle(.plain)
-            .help("Settings (coming soon)")
+            .help("Settings — shows a toast until preferences ship")
         }
         .padding(.horizontal, 24)
         .frame(height: 48)

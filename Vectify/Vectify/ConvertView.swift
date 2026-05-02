@@ -6,6 +6,7 @@ import UniformTypeIdentifiers
 /// Convert workspace styled like `stitch_svg_vector_toolbox/convert_initial_dark_mode/code.html`.
 struct ConvertView: View {
     @Bindable var model: ConversionViewModel
+    @Environment(\.presentToast) private var presentToast
     @State private var fileDropHover = false
     @State private var showNewProjectSheet = false
     @State private var showRenameSheet = false
@@ -84,7 +85,7 @@ struct ConvertView: View {
             .help("Choose source folder for the current project (saved with this project)")
 
             Button {
-                // Reserved for future preferences
+                presentToast("Coming soon")
             } label: {
                 Image(systemName: "gearshape")
                     .font(.system(size: 15, weight: .regular))
@@ -92,7 +93,7 @@ struct ConvertView: View {
                     .padding(6)
             }
             .buttonStyle(.plain)
-            .help("Settings (coming soon)")
+            .help("Settings — shows a toast until preferences ship")
 
             Rectangle()
                 .fill(AppTheme.borderHairline)

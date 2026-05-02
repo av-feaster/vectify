@@ -6,6 +6,7 @@ import UniformTypeIdentifiers
 /// Instant convert workspace from `stitch_svg_vector_toolbox/instant_dark_mode/code.html`.
 struct InstantView: View {
     @Bindable var model: InstantViewModel
+    @Environment(\.presentToast) private var presentToast
 
     private var convertedCount: Int {
         model.items.filter { $0.status == .converted }.count
@@ -65,7 +66,7 @@ struct InstantView: View {
             .help("Optional Node-based SVG shrink before vd-tool")
 
             Button {
-                // Reserved
+                presentToast("Coming soon")
             } label: {
                 Image(systemName: "gearshape")
                     .font(.system(size: 15, weight: .regular))
@@ -73,7 +74,7 @@ struct InstantView: View {
                     .padding(6)
             }
             .buttonStyle(.plain)
-            .help("Settings (coming soon)")
+            .help("Settings — shows a toast until preferences ship")
         }
         .padding(.horizontal, 24)
         .frame(height: 48)

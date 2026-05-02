@@ -4,6 +4,16 @@
 
 Vectify is a macOS tool to convert SVG files into Android VectorDrawable XML, optimized for Kotlin Multiplatform Compose (`composeResources/drawable`).
 
+## Why we built this
+
+With **Kotlin Multiplatform** and **Compose Multiplatform**, you often want **one** shared resource tree—e.g. `composeApp/src/commonMain/composeResources/drawable/`—instead of maintaining separate “Android icons” and “iOS-equivalent” drops that drift out of sync. Put VectorDrawable XML there once; consume it from common code where your setup allows. The wrong place is still your Downloads folder, a temp directory named `final_final_v3`, or wherever Android Studio was feeling curious that day.
+
+**Android Studio** remains the right tool when you need **Vector Asset**’s compatibility and editing workflow: it rewards patience, one file at a time. Vectify is different: **batch** SVG → XML so you get a folder of drawables quickly. It does **not** replace Studio’s import/editor features; it is a **ready path** when you already trust your SVGs and mostly need conversion at scale (plus optional SVGO and logs you can read).
+
+Under the hood the app (and the Python CLI) run **vd-tool**, optional **SVGO**, and the same post-process we use in CI. If your idea of a good Friday is clicking **Vector Asset** until your wrist files for workers’ comp, Vectify will feel disappointingly efficient. Sorry about that.
+
+**Optional discoverability:** If you write long-form posts (Medium, a dev blog, etc.), one link in the app is often enough—set `authorWritingURL` in `Vectify/Vectify/GitHubLinks.swift` to show a **Writing** card in **About**. You do not need to turn this README into a link farm.
+
 ## Features
 
 - Batch SVG → XML conversion
@@ -64,3 +74,7 @@ See `scripts/build-dmg.sh` and Apple signing/notarization documentation.
 ## Optional: KMP smoke
 
 After conversion, drop generated XML into a minimal Compose module and run on Android and iOS targets as needed.
+
+---
+
+Hope you like it — [**fork**](https://github.com/av-feaster/vectify/fork), [**star**](https://github.com/av-feaster/vectify), or clone the repo and [**get started**](https://github.com/av-feaster/vectify#readme).

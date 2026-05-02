@@ -1,5 +1,40 @@
 import SwiftUI
 
+// MARK: - App toast (settings “coming soon”, etc.)
+
+private struct PresentToastKey: EnvironmentKey {
+    static let defaultValue: (String) -> Void = { _ in }
+}
+
+extension EnvironmentValues {
+    /// Show a short banner toast at the top of the window (host: `RootView`).
+    var presentToast: (String) -> Void {
+        get { self[PresentToastKey.self] }
+        set { self[PresentToastKey.self] = newValue }
+    }
+}
+
+private struct ToastBanner: View {
+    let message: String
+
+    var body: some View {
+        Text(message)
+            .font(.system(size: 13, weight: .semibold))
+            .foregroundStyle(AppTheme.onSurface)
+            .padding(.horizontal, 18)
+            .padding(.vertical, 10)
+            .background(
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(AppTheme.surfaceContainer)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .stroke(AppTheme.borderSubtle, lineWidth: 1)
+                    )
+            )
+            .shadow(color: .black.opacity(0.4), radius: 18, y: 8)
+    }
+}
+
 private enum SidebarSection: String, CaseIterable, Identifiable, Hashable {
     case convert
     case instant
@@ -100,6 +135,8 @@ struct RootView: View {
     @State private var repairModel = RepairViewModel()
     @State private var showJavaOverlay: Bool
     @State private var hoveredSidebar: SidebarSection?
+    @State private var toastMessage: String?
+    @State private var toastDismissTask: Task<Void, Never>?
 
     init() {
         let java = PrerequisiteChecker.javaRuntime()
@@ -124,16 +161,30 @@ struct RootView: View {
 
     private var stitchSidebar: some View {
         VStack(alignment: .leading, spacing: 0) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("Vectify")
-                    .font(.system(size: 18, weight: .heavy))
-                    .foregroundStyle(AppTheme.primaryContainer)
-                    .tracking(-0.3)
-                Text("SVG to Android Vector")
-                    .font(.system(size: 10, weight: .medium))
-                    .foregroundStyle(AppTheme.outline)
-                    .tracking(1.2)
-                    .textCase(.uppercase)
+            HStack(alignment: .center, spacing: 10) {
+                Image("vectify_main")
+                    .resizable()
+                    .interpolation(.high)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 36, height: 36)
+                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                            .stroke(AppTheme.borderHairline, lineWidth: 1)
+                    )
+                    .accessibilityHidden(true)
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Vectify")
+                        .font(.system(size: 19, weight: .bold, design: .rounded))
+                        .foregroundStyle(AppTheme.primaryContainer)
+                        .tracking(-0.2)
+                    Text("SVG to Android Vector")
+                        .font(.system(size: 10, weight: .medium, design: .rounded))
+                        .foregroundStyle(AppTheme.outline)
+                        .tracking(1.2)
+                        .textCase(.uppercase)
+                }
             }
             .padding(.horizontal, 12)
             .padding(.bottom, 16)
@@ -190,8 +241,28 @@ struct RootView: View {
                     showJavaOverlay = false
                 }
                 .transition(.opacity)
+                .zIndex(100)
             }
         }
+        .overlay(alignment: .top) {
+            if let toastMessage {
+                HStack {
+                    Spacer(minLength: 0)
+                    ToastBanner(message: toastMessage)
+                    Spacer(minLength: 0)
+                }
+                .padding(.top, 12)
+                .transition(
+                    .asymmetric(
+                        insertion: .move(edge: .top).combined(with: .opacity),
+                        removal: .move(edge: .top).combined(with: .opacity)
+                    )
+                )
+                .allowsHitTesting(false)
+            }
+        }
+        .animation(.spring(response: 0.4, dampingFraction: 0.84), value: toastMessage)
+        .environment(\.presentToast, scheduleToast)
         .frame(minWidth: 900, minHeight: 600)
         .preferredColorScheme(.dark)
         .onAppear {
@@ -199,6 +270,16 @@ struct RootView: View {
             if java.isInstalled {
                 showJavaOverlay = false
             }
+        }
+    }
+
+    private func scheduleToast(_ message: String) {
+        toastDismissTask?.cancel()
+        toastMessage = message
+        toastDismissTask = Task { @MainActor in
+            try? await Task.sleep(for: .seconds(2.1))
+            guard !Task.isCancelled else { return }
+            toastMessage = nil
         }
     }
 }

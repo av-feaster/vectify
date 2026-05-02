@@ -7,6 +7,9 @@ enum VectifyGitHubLinks {
 
     static let authorProfile = URL(string: "https://github.com/av-feaster")!
 
+    /// Long-form posts (e.g. Medium). Set to a real URL to show **Writing** in About; leave `nil` to hide.
+    static let authorWritingURL: URL? = URL(string: "https://medium.com/p/016dbfae1b15")
+
     static let repository = URL(string: repositoryRootString)!
 
     /// Issue list: open items only (`is:issue is:open`).
