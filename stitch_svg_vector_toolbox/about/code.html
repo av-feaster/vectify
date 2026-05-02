@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About VectorConverter</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e9e7ed",
+                    "outline": "#717786",
+                    "background": "#faf9fe",
+                    "on-surface": "#1a1b1f",
+                    "inverse-surface": "#2f3034",
+                    "tertiary-fixed": "#ffdbcc",
+                    "inverse-on-surface": "#f1f0f5",
+                    "on-secondary-container": "#fffbff",
+                    "primary-container": "#0070eb",
+                    "on-primary-container": "#fefcff",
+                    "secondary-container": "#6664e4",
+                    "surface-tint": "#005bc1",
+                    "primary-fixed": "#d8e2ff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#0c006a",
+                    "tertiary-container": "#c64f00",
+                    "surface-container-low": "#f4f3f8",
+                    "outline-variant": "#c1c6d7",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#004493",
+                    "on-tertiary-container": "#fffbff",
+                    "surface-variant": "#e3e2e7",
+                    "surface-dim": "#dad9df",
+                    "primary": "#0058bc",
+                    "surface-bright": "#faf9fe",
+                    "secondary-fixed": "#e2dfff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#3631b4",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#351000",
+                    "on-background": "#1a1b1f",
+                    "tertiary": "#9e3d00",
+                    "on-tertiary-fixed-variant": "#7c2e00",
+                    "primary-fixed-dim": "#adc6ff",
+                    "secondary": "#4c4aca",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e3e2e7",
+                    "surface-container": "#eeedf3",
+                    "on-primary-fixed": "#001a41",
+                    "secondary-fixed-dim": "#c2c1ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface": "#faf9fe",
+                    "on-surface-variant": "#414755",
+                    "inverse-primary": "#adc6ff",
+                    "tertiary-fixed-dim": "#ffb595"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin": "24px",
+                    "container_padding": "20px",
+                    "sidebar_width": "240px"
+            },
+            "fontFamily": {
+                    "body": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "h1": ["Inter"],
+                    "label": ["Inter"],
+                    "h2": ["Inter"],
+                    "mono": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body": ["13px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "h1": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "h2": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono": ["12px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- SideNavBar (Execution from JSON) -->
+<nav class="fixed left-0 top-0 h-screen w-[240px] border-r bg-gray-50/70 dark:bg-gray-900/70 backdrop-blur-xl border-gray-200/50 dark:border-gray-800/50 flex flex-col py-4 gap-1 antialiased Inter">
+<div class="text-lg font-bold text-gray-900 dark:text-gray-100 px-4 py-2 flex flex-col">
+<span>VectorConverter</span>
+<span class="text-[10px] font-medium opacity-50 tracking-wider">SVG to Android Vector</span>
+</div>
+<div class="mt-4 flex flex-col gap-1">
+<a class="text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98] text-[13px]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="transform">transform</span>
+<span>Convert</span>
+</a>
+<a class="text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98] text-[13px]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="build">build</span>
+<span>Repair</span>
+</a>
+<a class="text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98] text-[13px]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings_suggest">settings_suggest</span>
+<span>Environment</span>
+</a>
+<a class="bg-blue-600 text-white rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 active:scale-[0.98] transition-transform text-[13px]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="info">info</span>
+<span>About</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar (Execution from JSON) -->
+<header class="fixed top-0 right-0 h-12 left-[240px] border-b border-gray-200 dark:border-gray-800 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-md flex items-center justify-end px-6 gap-4 z-10 select-none">
+<div class="flex items-center gap-2">
+<button class="hover:bg-gray-200/50 dark:hover:bg-gray-800/50 p-1.5 rounded-md transition-colors text-gray-500">
+<span class="material-symbols-outlined text-[18px]" data-icon="folder_open">folder_open</span>
+</button>
+<button class="hover:bg-gray-200/50 dark:hover:bg-gray-800/50 p-1.5 rounded-md transition-colors text-gray-500">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[240px] pt-12 h-screen overflow-y-auto bg-surface-bright">
+<div class="max-w-3xl mx-auto px-margin py-32 flex flex-col items-center text-center">
+<!-- Hero App Info -->
+<div class="mb-12">
+<div class="w-32 h-32 mb-8 mx-auto relative group">
+<div class="absolute inset-0 bg-primary-container blur-2xl opacity-10 rounded-full group-hover:opacity-20 transition-opacity"></div>
+<div class="relative w-full h-full bg-surface-container-lowest rounded-3xl border border-outline-variant shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[64px] text-primary" data-icon="vector_library" style="font-variation-settings: 'FILL' 1;">slide_library</span>
+</div>
+</div>
+<h1 class="font-h1 text-h1 text-on-surface mb-1">VectorConverter</h1>
+<p class="font-mono text-mono text-outline uppercase tracking-wider">Version 2.4.0 (Build 2023.1)</p>
+</div>
+<!-- Description -->
+<div class="max-w-lg mb-16">
+<p class="font-body text-body text-on-surface-variant leading-relaxed">
+                    A high-performance utility for converting SVGs to Android Vector Drawables and repairing XML assets. Designed for developers who demand precision, speed, and seamless integration into the Android Studio workflow.
+                </p>
+</div>
+<!-- Bento Layout for Details -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full text-left">
+<!-- Third-Party Section -->
+<div class="p-5 bg-surface-container-lowest border border-outline-variant rounded-xl col-span-1 md:col-span-2">
+<h2 class="font-label text-label text-outline mb-4 uppercase">Third-Party Components</h2>
+<div class="flex items-center justify-between py-2 border-b border-surface-variant">
+<div class="flex flex-col">
+<span class="font-body text-body font-semibold">vd-tool</span>
+<span class="font-body-sm text-body-sm text-outline">Android Vector Asset Tool</span>
+</div>
+<div class="text-right">
+<span class="font-mono text-mono bg-surface-container-high px-2 py-0.5 rounded text-[10px]">v1.2.0</span>
+<div class="font-body-sm text-body-sm text-primary mt-1">Apache 2.0</div>
+</div>
+</div>
+</div>
+<!-- Links Section -->
+<div class="p-5 bg-surface-container-lowest border border-outline-variant rounded-xl hover:border-primary/30 transition-colors group cursor-pointer">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="code">code</span>
+<h3 class="font-body text-body font-bold">GitHub Repository</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">View the source code, branches, and documentation for VectorConverter.</p>
+</div>
+<div class="p-5 bg-surface-container-lowest border border-outline-variant rounded-xl hover:border-primary/30 transition-colors group cursor-pointer">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" data-icon="bug_report">bug_report</span>
+<h3 class="font-body text-body font-bold">Issue Tracker</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Report bugs, suggest features, or track the progress of current development.</p>
+</div>
+</div>
+<!-- Footer Branding -->
+<div class="mt-20 pt-8 border-t border-surface-variant w-full flex flex-col items-center gap-4">
+<div class="flex items-center gap-8">
+<div class="flex flex-col items-center">
+<span class="font-label text-label text-outline mb-1">Developed by</span>
+<span class="font-body text-body font-semibold">AssetLab Creative</span>
+</div>
+<div class="h-8 w-px bg-surface-variant"></div>
+<div class="flex flex-col items-center">
+<span class="font-label text-label text-outline mb-1">Architecture</span>
+<span class="font-body text-body font-semibold">macOS Native</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-outline opacity-60 mt-4">© 2023 VectorConverter Systems. All rights reserved.</p>
+</div>
+</div>
+</main>
+<!-- Background Decorative Image (Subtle Glass Effect) -->
+<div class="fixed bottom-0 right-0 -z-10 w-1/3 h-1/3 opacity-5 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="A sophisticated abstract wallpaper for a high-end software application. The image features smooth, flowing 3D waves in soft shades of cool blue and deep charcoal, creating a sense of technical precision and calm. The lighting is diffused and professional, mimicking a modern tech studio environment. The aesthetic is clean, minimal, and premium, perfectly aligning with a corporate macOS desktop utility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAglyS97RQ9jEZm_vVZ8rq64dAd_Lld0mLEKkrRsGpfgeSxsinpC_8Uu5ulDbjV2jXyLVAT9KilPc4HobqsQp-zYsd2QIjVgp7h0N0nV_DsqNfpFpAxus8sWjiNxnWQuHd8DKCJHgDctsmnHT7choE9rmXjFniHXQsnROs2Vru6opgPeRpUdZzsgX1OKTtoh78gAFqBposdbM5uaEzb6IqBBn7dJTxZgxzTvo8d0SuGHDlS8y-tvZc67I8RkROL9JxeqX9UQ6OWwA"/>
+</div>
+</body></html>

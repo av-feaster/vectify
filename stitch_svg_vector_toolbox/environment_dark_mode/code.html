@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#4c4aca",
+                    "on-primary-fixed": "#001a41",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#0070eb",
+                    "tertiary-container": "#c64f00",
+                    "surface-tint": "#005bc1",
+                    "on-primary-container": "#fefcff",
+                    "secondary-fixed-dim": "#c2c1ff",
+                    "tertiary-fixed": "#ffdbcc",
+                    "surface-variant": "#414755", // Adjusted for dark theme
+                    "inverse-on-surface": "#f1f0f5",
+                    "secondary-fixed": "#e2dfff",
+                    "surface-container-highest": "#33353a", // Dark variant
+                    "error-container": "#93000a", // Dark variant
+                    "outline-variant": "#414755", // Dark variant
+                    "surface-dim": "#111318", // Dark variant
+                    "on-tertiary-fixed": "#351000",
+                    "outline": "#8b91a0", // Adjusted for dark theme
+                    "surface-container-lowest": "#0f1115", // Dark variant
+                    "surface-container-low": "#1a1b1f", // Dark variant
+                    "on-surface-variant": "#c1c6d7", // Adjusted for dark theme
+                    "error": "#ffb4ab", // Dark variant
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb595",
+                    "on-tertiary-container": "#fffbff",
+                    "on-secondary-fixed-variant": "#3631b4",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#7c2e00",
+                    "on-secondary-fixed": "#0c006a",
+                    "on-background": "#e2e2e6", // Dark variant
+                    "on-error": "#690005", // Dark variant
+                    "on-surface": "#e2e2e6", // Dark variant
+                    "primary-fixed": "#d8e2ff",
+                    "background": "#1a1b1f", // Dark variant
+                    "primary-fixed-dim": "#adc6ff",
+                    "surface-container": "#1e1f25", // Dark variant
+                    "primary": "#adc6ff", // Dark variant (primary-fixed-dim)
+                    "inverse-surface": "#e2e2e6", // Dark variant
+                    "tertiary": "#ffb595", // Dark variant
+                    "surface": "#1a1b1f", // Dark variant
+                    "secondary-container": "#3631b4", // Dark variant
+                    "on-secondary-container": "#e2dfff", // Dark variant
+                    "surface-container-high": "#282a2f", // Dark variant
+                    "on-primary-fixed-variant": "#004493",
+                    "inverse-primary": "#0058bc", // Dark variant
+                    "surface-bright": "#37393e", // Dark variant
+                    "on-tertiary": "#561f00" // Dark variant
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin": "24px",
+                    "container_padding": "20px",
+                    "sidebar_width": "240px"
+            },
+            "fontFamily": {
+                    "body": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "h1": ["Inter"],
+                    "label": ["Inter"],
+                    "h2": ["Inter"],
+                    "mono": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body": ["13px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "h1": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "h2": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono": ["12px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            vertical-align: middle;
+            font-size: 18px;
+        }
+        .vibrancy {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-[240px] border-r bg-surface-container-low/70 vibrancy border-outline-variant/30 flex flex-col py-4 gap-1 z-50">
+<div class="text-lg font-bold text-on-surface px-4 py-2 mb-4">
+            VectorConverter
+            <div class="text-[11px] font-normal text-outline">SVG to Android Vector</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-on-surface-variant hover:bg-surface-variant/30 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="transform">transform</span>
+<span class="font-sans text-[13px]">Convert</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant/30 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span class="font-sans text-[13px]">Repair</span>
+</a>
+<a class="bg-primary-container text-on-primary-container rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 active:scale-[0.98] transition-transform shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="settings_suggest" style="font-variation-settings: 'FILL' 1;">settings_suggest</span>
+<span class="font-sans text-[13px]">Environment</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant/30 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-sans text-[13px]">About</span>
+</a>
+</nav>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 h-12 left-[240px] border-b border-outline-variant/30 bg-surface-container-low/80 vibrancy flex items-center justify-between px-6 z-40">
+<div class="text-[13px] font-semibold text-on-surface">Environment Diagnostics</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-variant/30 p-1.5 rounded-md cursor-default select-none">
+<span class="material-symbols-outlined text-outline" data-icon="folder_open">folder_open</span>
+</button>
+<button class="hover:bg-surface-variant/30 p-1.5 rounded-md cursor-default select-none">
+<span class="material-symbols-outlined text-outline" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] pt-12 min-h-screen">
+<div class="max-w-5xl mx-auto p-margin">
+<!-- Header Section -->
+<div class="flex items-center justify-between mb-8">
+<div>
+<h1 class="font-h1 text-h1 text-on-surface">System Readiness</h1>
+<p class="font-body text-body text-outline mt-1">Verify tools and runtimes required for high-fidelity SVG conversion.</p>
+</div>
+<button class="bg-primary-container hover:bg-primary text-on-primary-container font-label text-label px-4 py-2 rounded-lg flex items-center gap-2 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="content_copy">content_copy</span>
+                    Copy Diagnostics
+                </button>
+</div>
+<!-- Bento Grid of Diagnostics -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-margin mb-8">
+<!-- Java Status Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-5 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-400" data-icon="terminal">terminal</span>
+</div>
+<div>
+<div class="font-label text-label text-on-surface-variant">Runtime</div>
+<div class="font-h2 text-h2 text-on-surface">Java (OK)</div>
+</div>
+</div>
+<span class="bg-green-900/30 text-green-400 px-2 py-0.5 rounded text-[11px] font-bold">STABLE</span>
+</div>
+<div class="mt-6">
+<div class="flex items-center gap-2 text-body mb-2">
+<span class="material-symbols-outlined text-green-400" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-medium text-on-surface">Version 17.0.2</span>
+</div>
+<div class="bg-surface-container-low font-mono text-mono p-3 rounded border border-outline-variant/30 text-outline truncate">
+                            /usr/bin/java
+                        </div>
+</div>
+</div>
+<!-- vd-tool Status Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-5 rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="deployed_code">deployed_code</span>
+</div>
+<div>
+<div class="font-label text-label text-on-surface-variant">Internal</div>
+<div class="font-h2 text-h2 text-on-surface">vd-tool (Bundled)</div>
+</div>
+</div>
+<span class="bg-primary-container/20 text-primary px-2 py-0.5 rounded text-[11px] font-bold">INTERNAL</span>
+</div>
+<div class="mt-6">
+<div class="flex items-center gap-2 text-body mb-2">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-medium text-on-surface">Version 1.2</span>
+</div>
+<div class="bg-surface-container-low font-mono text-mono p-3 rounded border border-outline-variant/30 text-outline truncate">
+                            ../Resources/bin/vd-tool
+                        </div>
+</div>
+</div>
+<!-- Node.js Status Card (Error) -->
+<div class="bg-surface-container-lowest border border-error/30 p-5 rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-error"></div>
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-error/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="javascript">javascript</span>
+</div>
+<div>
+<div class="font-label text-label text-on-surface-variant">Optimizer</div>
+<div class="font-h2 text-h2 text-on-surface">Node.js (Missing)</div>
+</div>
+</div>
+<span class="bg-error text-on-error px-2 py-0.5 rounded text-[11px] font-bold uppercase">Critical</span>
+</div>
+<div class="mt-6">
+<div class="flex items-center gap-2 text-body mb-2">
+<span class="material-symbols-outlined text-error" data-icon="error" style="font-variation-settings: 'FILL' 1;">error</span>
+<span class="font-medium text-error font-body">Required for SVGO optimization</span>
+</div>
+<div class="bg-error/5 font-mono text-mono p-3 rounded border border-error/20 text-error/80 italic">
+                            Command 'node' not found in PATH
+                        </div>
+</div>
+</div>
+</div>
+<!-- Troubleshooting Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-margin">
+<!-- Action Card: Installation -->
+<div class="bg-surface-container-high/50 p-6 rounded-xl border border-outline-variant">
+<h2 class="font-h2 text-h2 text-on-surface flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="magic_button">magic_button</span>
+                        Quick Fixes
+                    </h2>
+<div class="space-y-4">
+<div class="flex items-start gap-4">
+<div class="mt-1">
+<span class="material-symbols-outlined text-outline" data-icon="link">link</span>
+</div>
+<div>
+<div class="font-body text-body font-semibold text-on-surface">Install Java via Temurin</div>
+<p class="text-body-sm text-outline mb-2">OpenJDK distribution for macOS (Universal Binary).</p>
+<a class="text-primary hover:underline text-body-sm font-medium flex items-center gap-1" href="#">
+                                    Visit adoptium.net
+                                    <span class="material-symbols-outlined text-[14px]" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 pt-4">
+<div class="flex items-start gap-4">
+<div class="mt-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<div class="w-full">
+<div class="font-body text-body font-semibold text-on-surface">Command Line (Homebrew)</div>
+<p class="text-body-sm text-outline mb-2">Quickly install the latest stable environment.</p>
+<div class="bg-inverse-surface text-inverse-on-surface font-mono text-mono p-3 rounded-lg flex items-center justify-between group">
+<code>brew install openjdk node</code>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Card: System Info & Permissions -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant space-y-6">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-outline" data-icon="verified_user">verified_user</span>
+                            Security &amp; Permissions
+                        </h2>
+<p class="text-body-sm text-on-surface-variant">
+                            VectorConverter operates in a sandboxed environment to protect your system files. Ensure high-level folder access is granted in System Settings &gt; Privacy &amp; Security.
+                        </p>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-3 bg-surface-container-lowest rounded border border-outline-variant/30">
+<div class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">Sandbox Status</div>
+<div class="flex items-center gap-2 text-on-surface">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="font-label">Enabled</span>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest rounded border border-outline-variant/30">
+<div class="text-[10px] font-bold text-outline uppercase tracking-wider mb-1">File Access</div>
+<div class="flex items-center gap-2 text-on-surface">
+<div class="w-2 h-2 rounded-full bg-amber-500"></div>
+<span class="font-label">Restricted</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center p-8 bg-surface-container-low rounded-lg border-2 border-dashed border-outline-variant/30">
+<div class="text-center">
+<span class="material-symbols-outlined text-[32px] text-outline/30 mb-2 block" data-icon="policy">policy</span>
+<span class="text-body-sm text-outline block max-w-[200px]">Permissions are required to write output files to custom directories.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Log Section -->
+<div class="mt-8">
+<div class="flex items-center justify-between mb-2">
+<label class="font-label text-label text-outline uppercase tracking-widest">Initialization Log</label>
+<span class="text-body-sm text-outline">Last refresh: 14:02:11</span>
+</div>
+<div class="bg-surface-container-highest/30 border border-outline-variant/30 rounded-lg p-4 font-mono text-mono text-on-surface overflow-x-auto">
+<div class="flex gap-4 opacity-50"><span class="w-12 shrink-0">14:02:10</span> <span>Checking system environment...</span></div>
+<div class="flex gap-4"><span class="w-12 shrink-0 opacity-50">14:02:10</span> <span class="text-green-400">[SUCCESS] Found Java 17.0.2 at /usr/bin/java</span></div>
+<div class="flex gap-4"><span class="w-12 shrink-0 opacity-50">14:02:11</span> <span class="text-primary">[INFO] Loaded internal vd-tool v1.2</span></div>
+<div class="flex gap-4"><span class="w-12 shrink-0 opacity-50">14:02:11</span> <span class="text-error">[FAILED] svgo-optimizer: Node.js not found</span></div>
+<div class="flex gap-4 opacity-50"><span class="w-12 shrink-0">14:02:11</span> <span>Diagnostic report generated. Ready for conversion.</span></div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

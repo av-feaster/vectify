@@ -1,0 +1,334 @@
+<html class="dark" lang="en"><head></head><body class="bg-background text-on-surface font-body text-body selection:bg-primary-fixed">```html
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#4c4aca",
+                    "on-primary-fixed": "#001a41",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#0070eb",
+                    "tertiary-container": "#c64f00",
+                    "surface-tint": "#005bc1",
+                    "on-primary-container": "#fefcff",
+                    "secondary-fixed-dim": "#c2c1ff",
+                    "tertiary-fixed": "#ffdbcc",
+                    "surface-variant": "#e3e2e7",
+                    "inverse-on-surface": "#f1f0f5",
+                    "secondary-fixed": "#e2dfff",
+                    "surface-container-highest": "#e3e2e7",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#c1c6d7",
+                    "surface-dim": "#dad9df",
+                    "on-tertiary-fixed": "#351000",
+                    "outline": "#717786",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f4f3f8",
+                    "on-surface-variant": "#414755",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb595",
+                    "on-tertiary-container": "#fffbff",
+                    "on-secondary-fixed-variant": "#3631b4",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#7c2e00",
+                    "on-secondary-fixed": "#0c006a",
+                    "on-background": "#1a1b1f",
+                    "on-error": "#ffffff",
+                    "on-surface": "#1a1b1f",
+                    "primary-fixed": "#d8e2ff",
+                    "background": "#faf9fe",
+                    "primary-fixed-dim": "#adc6ff",
+                    "surface-container": "#eeedf3",
+                    "primary": "#0058bc",
+                    "inverse-surface": "#2f3034",
+                    "tertiary": "#9e3d00",
+                    "surface": "#faf9fe",
+                    "secondary-container": "#6664e4",
+                    "on-secondary-container": "#fffbff",
+                    "surface-container-high": "#e9e7ed",
+                    "on-primary-fixed-variant": "#004493",
+                    "inverse-primary": "#adc6ff",
+                    "surface-bright": "#faf9fe",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin": "24px",
+                    "container_padding": "20px",
+                    "sidebar_width": "240px"
+            },
+            "fontFamily": {
+                    "body": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "h1": ["Inter"],
+                    "label": ["Inter"],
+                    "h2": ["Inter"],
+                    "mono": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body": ["13px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "h1": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "h2": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono": ["12px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            font-size: 18px;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Dark mode overrides using specified theme tokens */
+        .dark body { 
+            background-color: #1a1b1f; /* on-background used as background for dark mode contrast */
+            color: #faf9fe; /* background used as text color in dark mode */
+        }
+        .dark .bg-background { background-color: #1a1b1f; }
+        .dark .text-on-surface { color: #f1f0f5; }
+        .dark .text-outline { color: #c1c6d7; }
+        
+        .dark aside {
+            background-color: #2f3034;
+            border-color: #414755;
+        }
+        .dark .text-gray-900 { color: #ffffff; }
+        .dark .text-gray-600 { color: #c1c6d7; }
+        .dark .hover\:bg-gray-200\/50:hover { background-color: rgba(65, 71, 85, 0.5); }
+        
+        .dark header {
+            background-color: rgba(47, 48, 52, 0.8);
+            border-color: #414755;
+        }
+        
+        .dark .bg-surface-container-lowest { background-color: #1a1b1f; border-color: #414755; }
+        .dark .bg-surface-container-low { background-color: #2f3034; border-color: #414755; }
+        .dark .bg-surface-container-high { background-color: #414755; }
+        .dark .border-outline-variant { border-color: #414755; }
+        .dark .divide-outline-variant > :not([hidden]) ~ :not([hidden]) { border-color: #414755; }
+        
+        .dark .bg-surface-container-low\/30 { background-color: rgba(47, 48, 52, 0.3); }
+        .dark .bg-surface-container-low\/20 { background-color: rgba(47, 48, 52, 0.2); }
+        .dark .hover\:bg-surface-container-low\/10:hover { background-color: rgba(47, 48, 52, 0.1); }
+        
+        .dark .bg-surface-container-highest\/50 { background-color: rgba(65, 71, 85, 0.5); border-color: #414755; }
+        
+        .dark .text-on-surface-variant { color: #c1c6d7; }
+        .dark .text-outline-variant { color: #717786; }
+
+        .dark .bg-secondary-container\/10 { background-color: rgba(102, 100, 228, 0.1); border-color: rgba(102, 100, 228, 0.2); }
+    </style>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-[240px] border-r border-gray-200/50 dark:border-gray-800/50 bg-gray-50/70 dark:bg-gray-900/70 backdrop-blur-xl flex flex-col py-4 gap-1 z-50">
+<div class="text-lg font-bold text-gray-900 dark:text-gray-100 px-4 py-2 mb-4">
+            VectorConverter
+            <div class="text-[10px] font-normal text-outline uppercase tracking-wider">SVG to Android Vector</div>
+</div>
+<nav class="flex-1 space-y-0.5">
+<a class="text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="transform">transform</span>
+<span class="antialiased">Convert</span>
+</a>
+<!-- Active State: Repair -->
+<a class="bg-primary-container text-on-primary-container rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="build" style="font-variation-settings: 'FILL' 1;">build</span>
+<span class="antialiased">Repair</span>
+</a>
+<a class="text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+<span class="antialiased">Environment</span>
+</a>
+<a class="text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="antialiased">About</span>
+</a>
+</nav>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 left-[240px] h-12 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 flex items-center justify-end px-6 gap-4 z-40">
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 p-1.5 rounded-md transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="folder_open">folder_open</span>
+</button>
+<button class="flex items-center gap-2 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 p-1.5 rounded-md transition-colors">
+<span class="material-symbols-outlined text-outline" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] mt-12 p-margin">
+<div class="max-w-6xl mx-auto space-y-6">
+<!-- Header Section -->
+<div class="space-y-1">
+<h1 class="font-h1 text-h1 text-on-surface">Vector Repair</h1>
+<p class="text-outline font-body text-body">Select a Drawable folder to fix XML issues (viewport/stroke-fill parity).</p>
+</div>
+<!-- Action Bar -->
+<div class="bg-surface-container-lowest border border-outline-variant p-4 rounded-xl flex items-center gap-4 shadow-sm">
+<div class="flex-1 flex items-center bg-surface-container-low border border-outline-variant rounded-lg px-3 py-2 gap-3 focus-within:ring-2 focus-within:ring-primary-container transition-all">
+<span class="material-symbols-outlined text-outline" data-icon="folder">folder</span>
+<span class="text-outline-variant font-body text-body">~/projects/android/app/src/main/res/drawable</span>
+</div>
+<button class="bg-surface-container-high text-on-surface px-4 py-2 rounded-lg font-label text-label hover:bg-surface-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="browse_gallery">browse_gallery</span>
+                    Browse
+                </button>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-label text-label hover:opacity-90 transition-opacity flex items-center gap-2 shadow-sm active:scale-95">
+<span class="material-symbols-outlined" data-icon="auto_fix_high" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+                    Repair All
+                </button>
+</div>
+<!-- Bento Grid - Files & Stats -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- File Table Card -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-4 py-3 border-b border-outline-variant flex justify-between items-center bg-surface-container-low/30">
+<span class="font-label text-label uppercase tracking-wider text-outline">File Status</span>
+<span class="text-primary font-label text-[11px]">8 Files Found</span>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/20">
+<th class="px-4 py-2 font-label text-[11px] text-outline border-b border-outline-variant">FILENAME</th>
+<th class="px-4 py-2 font-label text-[11px] text-outline border-b border-outline-variant">STATUS</th>
+<th class="px-4 py-2 font-label text-[11px] text-outline border-b border-outline-variant">CHANGELOG</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low/10 transition-colors">
+<td class="px-4 py-3 font-mono text-body">icon_edit.xml</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center gap-1.5 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                        Fixed
+                                    </span>
+</td>
+<td class="px-4 py-3 text-outline italic">Added missing viewport</td>
+</tr>
+<tr class="hover:bg-surface-container-low/10 transition-colors">
+<td class="px-4 py-3 font-mono text-body">icon_user.xml</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center gap-1.5 text-outline">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+                                        No changes needed
+                                    </span>
+</td>
+<td class="px-4 py-3 text-outline-variant">—</td>
+</tr>
+<tr class="hover:bg-surface-container-low/10 transition-colors">
+<td class="px-4 py-3 font-mono text-body">ic_nav_home.xml</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center gap-1.5 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                        Fixed
+                                    </span>
+</td>
+<td class="px-4 py-3 text-outline italic">Corrected stroke-fill parity</td>
+</tr>
+<tr class="hover:bg-surface-container-low/10 transition-colors">
+<td class="px-4 py-3 font-mono text-body">ic_settings_gear.xml</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center gap-1.5 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                        Fixed
+                                    </span>
+</td>
+<td class="px-4 py-3 text-outline italic">Standardized pathData rounding</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Analysis Sidebar Card -->
+<div class="space-y-6">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4">
+<h3 class="font-label text-label text-outline uppercase tracking-wider mb-4">Optimization Health</h3>
+<div class="relative h-48 w-full flex items-center justify-center">
+<!-- Placeholder for a visual chart/metric -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-32 h-32 rounded-full border-[12px] border-primary-container border-t-outline-variant/30 rotate-45 flex items-center justify-center">
+<div class="text-center -rotate-45">
+<div class="text-2xl font-bold text-on-surface">87%</div>
+<div class="text-[10px] text-outline">Optimized</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 space-y-2">
+<div class="flex justify-between text-body-sm">
+<span class="text-outline">Total Assets</span>
+<span class="text-on-surface font-medium">142</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span class="text-outline">Identified Issues</span>
+<span class="text-error font-medium">3</span>
+</div>
+</div>
+</div>
+<div class="bg-secondary-container/10 border border-secondary-container/20 rounded-xl p-4">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary" data-icon="tips_and_updates">tips_and_updates</span>
+<span class="font-h2 text-[14px] text-on-surface">Pro Tip</span>
+</div>
+<p class="text-body-sm text-outline">Consistent viewports prevent scaling artifacts in high-density Android displays.</p>
+</div>
+</div>
+</div>
+<!-- Monospace Log -->
+<div class="space-y-2">
+<div class="flex items-center justify-between px-1">
+<span class="font-label text-label text-outline uppercase tracking-wider">Process Logs</span>
+<button class="text-primary font-label text-[11px] hover:underline">Clear Logs</button>
+</div>
+<div class="bg-surface-container-highest/50 border border-outline-variant rounded-lg p-4 font-mono text-mono text-on-surface-variant overflow-y-auto max-h-48 shadow-inner">
+<div class="flex gap-4">
+<span class="text-outline shrink-0">[10:42:11]</span>
+<span>Initializing Repair Module...</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline shrink-0">[10:42:12]</span>
+<span>Scanned 8 files in /drawable.</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline shrink-0">[10:42:13]</span>
+<span class="text-primary-fixed">icon_edit.xml: Detected missing viewport. Patching 24x24...</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline shrink-0">[10:42:13]</span>
+<span>icon_user.xml: Validation passed. Skipping.</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline shrink-0">[10:42:14]</span>
+<span class="text-primary-fixed">ic_nav_home.xml: Fixed stroke-fill parity (stroke: #000000 -&gt; fill: #000000).</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline shrink-0">[10:42:14]</span>
+<span>Ready for batch export.</span>
+</div>
+<div class="mt-1 animate-pulse">_</div>
+</div>
+</div>
+</div>
+</main>
+```</body></html>

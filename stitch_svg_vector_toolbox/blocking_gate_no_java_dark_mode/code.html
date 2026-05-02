@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VectorConverter - Java Required</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#4c4aca",
+                        "on-primary-fixed": "#001a41",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#0070eb",
+                        "tertiary-container": "#c64f00",
+                        "surface-tint": "#005bc1",
+                        "on-primary-container": "#fefcff",
+                        "secondary-fixed-dim": "#c2c1ff",
+                        "tertiary-fixed": "#ffdbcc",
+                        "surface-variant": "#414755", // Adjusted for dark mode consistency
+                        "inverse-on-surface": "#1a1b1f",
+                        "secondary-fixed": "#e2dfff",
+                        "surface-container-highest": "#333539",
+                        "error-container": "#93000a",
+                        "outline-variant": "#414755",
+                        "surface-dim": "#111318",
+                        "on-tertiary-fixed": "#351000",
+                        "outline": "#8b91a0",
+                        "surface-container-lowest": "#0b0e13",
+                        "surface-container-low": "#1a1b1f",
+                        "on-surface-variant": "#c1c6d7",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb595",
+                        "on-tertiary-container": "#fffbff",
+                        "on-secondary-fixed-variant": "#3631b4",
+                        "on-primary": "#002f65",
+                        "on-tertiary-fixed-variant": "#7c2e00",
+                        "on-secondary-fixed": "#0c006a",
+                        "on-background": "#e2e2e6",
+                        "on-error": "#690005",
+                        "on-surface": "#e2e2e6",
+                        "primary-fixed": "#d8e2ff",
+                        "background": "#1a1b1f",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-container": "#1e2025",
+                        "primary": "#adc6ff",
+                        "inverse-surface": "#e2e2e6",
+                        "tertiary": "#ffb595",
+                        "surface": "#1a1b1f",
+                        "secondary-container": "#3631b4",
+                        "on-secondary-container": "#e2dfff",
+                        "surface-container-high": "#282a2f",
+                        "on-primary-fixed-variant": "#004493",
+                        "inverse-primary": "#0058bc",
+                        "surface-bright": "#37393e",
+                        "on-tertiary": "#552000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "sidebar_width": "240px",
+                        "unit": "4px",
+                        "margin": "24px",
+                        "container_padding": "20px"
+                    },
+                    "fontFamily": {
+                        "body": ["Inter"],
+                        "mono": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "body": ["13px", {"lineHeight": "20px"}],
+                        "body-sm": ["11px", {"lineHeight": "16px"}],
+                        "h1": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "h2": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "mono": ["12px", {"lineHeight": "18px"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden transition-colors duration-300">
+<!-- Background App (Disabled & Blurred) -->
+<div class="fixed inset-0 flex blur-md saturate-50 opacity-20 pointer-events-none select-none">
+<!-- SideNav -->
+<aside class="fixed left-0 top-0 h-screen w-[240px] border-r bg-surface-container-low/70 backdrop-blur-xl border-outline-variant/30 flex flex-col py-4 gap-1">
+<div class="text-lg font-bold text-on-surface px-4 py-2">VectorConverter</div>
+<div class="px-4 text-xs text-outline mb-4">SVG to Android Vector</div>
+<nav class="flex flex-col gap-1">
+<div class="bg-primary-container text-on-primary-container rounded-md mx-2 px-3 py-1.5 flex items-center gap-3">
+<span class="material-symbols-outlined">transform</span>
+<span>Convert</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container-high rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors">
+<span class="material-symbols-outlined">build</span>
+<span>Repair</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-container-high rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors">
+<span class="material-symbols-outlined">settings_suggest</span>
+<span>Environment</span>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-1 p-margin">
+<header class="flex items-center justify-end px-6 gap-4 h-12 border-b border-outline-variant/30 bg-surface-container/80 backdrop-blur-md">
+<span class="material-symbols-outlined text-outline">folder_open</span>
+<span class="material-symbols-outlined text-outline">settings</span>
+</header>
+<div class="mt-8 grid grid-cols-3 gap-6">
+<div class="col-span-2 h-[400px] bg-surface-container-low border border-outline-variant/30 rounded-xl"></div>
+<div class="h-[400px] bg-surface-container-low border border-outline-variant/30 rounded-xl"></div>
+</div>
+</main>
+</div>
+<!-- Blocking Gate Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-background/60 backdrop-blur-md">
+<div class="w-full max-w-[540px] bg-surface-container-lowest border border-outline-variant rounded-xl shadow-2xl p-8 flex flex-col items-center text-center">
+<!-- Warning Visual -->
+<div class="w-20 h-20 bg-error-container/20 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[48px] text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<!-- Header -->
+<h1 class="font-h1 text-h1 text-on-surface mb-3 tracking-tight">Java is required</h1>
+<p class="font-body text-body text-on-surface-variant max-w-[400px] mb-8 leading-relaxed">
+                VectorConverter requires a Java runtime (JRE/JDK) to perform conversions. Please install Java to continue.
+            </p>
+<!-- Actions Container -->
+<div class="w-full space-y-3">
+<button class="w-full bg-primary text-on-primary py-2.5 px-4 rounded-lg font-label text-label hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Open Temurin Download
+                </button>
+<div class="relative group">
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-3 flex items-center justify-between font-mono text-mono overflow-hidden">
+<span class="text-on-surface-variant select-all">brew install --cask temurin</span>
+<button class="flex items-center gap-1.5 text-primary font-label text-label hover:underline active:scale-95 transition-transform ml-4">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+                            Copy
+                        </button>
+</div>
+<div class="absolute -top-6 left-0 font-label text-[10px] text-outline uppercase tracking-wider">MacOS Command</div>
+</div>
+<div class="pt-4 flex flex-col gap-3">
+<div class="h-px bg-outline-variant/30 w-full"></div>
+<button class="w-full text-primary font-label text-label py-2 hover:bg-primary/5 rounded-lg transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+                        Re-check Environment
+                    </button>
+</div>
+</div>
+<!-- Environment Footer Details -->
+<div class="mt-8 flex items-center gap-6 text-outline font-body-sm text-body-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                    JAVA_HOME not set
+                </div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+                    Version: None detected
+                </div>
+</div>
+</div>
+</div>
+<!-- Background Artwork / Iconography -->
+<div class="fixed bottom-10 right-10 opacity-5 pointer-events-none">
+<img class="w-[400px] h-auto invert brightness-150" data-alt="A stylized, large-scale graphic of a coffee bean and steaming cup icon representing the Java platform. The illustration is rendered in a minimalist wireframe style using soft grays and blues to match a corporate dark-mode dashboard. Soft ambient lighting glows from behind the icon, creating a subtle professional background element that reinforces the technical requirement of the software environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg4qL-eux61xhb3LYhyFKE287IgW9R_JGQDDC-NVjGRqkyFYqMmAXCZsD-21__o8YSrerGoTOaycqXDgy7wrcun6CpL65KCSmCYxqy3GorRkOgAKeWzEy4i6fiFMdZWRwfSCMswp3_7Akfy9BW472xDR4jqRwEqgJQWMXzywzs2iWddEgrAiJAyxYAZiGKMU0RMsmCx4QZOSH847NEIKQXwhnBksApRabvvnGY0wg__BPLFEfq8Hhd_fMzut7OGN98Gk4E33nKMw"/>
+</div>
+</body></html>

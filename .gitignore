@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Xcode (local DerivedData when using -derivedDataPath under Svg2Xml/)
+Svg2Xml/.derivedData/
+Svg2Xml/.derivedData-release/
+
+# Xcode user-specific (keep machine-local schemes/settings out of the repo)
+**/xcuserdata/
+*.xcuserstate
+
+# DMG / archive staging (scripts/build-dmg.sh)
+build/

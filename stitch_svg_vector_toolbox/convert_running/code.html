@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e9e7ed",
+                    "outline": "#717786",
+                    "background": "#faf9fe",
+                    "on-surface": "#1a1b1f",
+                    "inverse-surface": "#2f3034",
+                    "tertiary-fixed": "#ffdbcc",
+                    "inverse-on-surface": "#f1f0f5",
+                    "on-secondary-container": "#fffbff",
+                    "primary-container": "#0070eb",
+                    "on-primary-container": "#fefcff",
+                    "secondary-container": "#6664e4",
+                    "surface-tint": "#005bc1",
+                    "primary-fixed": "#d8e2ff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#0c006a",
+                    "tertiary-container": "#c64f00",
+                    "surface-container-low": "#f4f3f8",
+                    "outline-variant": "#c1c6d7",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#004493",
+                    "on-tertiary-container": "#fffbff",
+                    "surface-variant": "#e3e2e7",
+                    "surface-dim": "#dad9df",
+                    "primary": "#0058bc",
+                    "surface-bright": "#faf9fe",
+                    "secondary-fixed": "#e2dfff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#3631b4",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#351000",
+                    "on-background": "#1a1b1f",
+                    "tertiary": "#9e3d00",
+                    "on-tertiary-fixed-variant": "#7c2e00",
+                    "primary-fixed-dim": "#adc6ff",
+                    "secondary": "#4c4aca",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e3e2e7",
+                    "surface-container": "#eeedf3",
+                    "on-primary-fixed": "#001a41",
+                    "secondary-fixed-dim": "#c2c1ff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#faf9fe",
+                    "on-surface-variant": "#414755",
+                    "inverse-primary": "#adc6ff",
+                    "tertiary-fixed-dim": "#ffb595"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "margin": "24px",
+                    "container_padding": "20px",
+                    "sidebar_width": "240px"
+            },
+            "fontFamily": {
+                    "body": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "h1": ["Inter"],
+                    "label": ["Inter"],
+                    "h2": ["Inter"],
+                    "mono": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body": ["13px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "h1": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "h2": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono": ["12px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            font-size: 18px;
+            vertical-align: middle;
+        }
+        .vibrancy-sidebar {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+        .loading-spin {
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body text-body">
+<!-- Side Navigation Shell -->
+<nav class="fixed left-0 top-0 h-screen w-[240px] border-r border-gray-200/50 dark:border-gray-800/50 bg-gray-50/70 dark:bg-gray-900/70 vibrancy-sidebar flex flex-col py-4 gap-1 z-50">
+<div class="text-lg font-bold text-gray-900 dark:text-gray-100 px-4 py-2 mb-2">
+            VectorConverter
+            <div class="text-[10px] font-normal text-outline tracking-wider uppercase">SVG to Android Vector</div>
+</div>
+<div class="bg-blue-600 text-white rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 active:scale-[0.98] transition-transform cursor-pointer">
+<span class="material-symbols-outlined" data-icon="transform">transform</span>
+<span class="font-sans text-[13px] antialiased">Convert</span>
+</div>
+<div class="text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98] cursor-pointer">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span class="font-sans text-[13px] antialiased">Repair</span>
+</div>
+<div class="text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98] cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+<span class="font-sans text-[13px] antialiased">Environment</span>
+</div>
+<div class="mt-auto text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98] cursor-pointer">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-sans text-[13px] antialiased">About</span>
+</div>
+</nav>
+<!-- Top App Bar Shell -->
+<header class="fixed top-0 left-0 right-0 h-12 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 ml-[240px] z-40">
+<div class="flex items-center gap-2">
+<span class="text-primary font-semibold text-[13px]">3 / 12 SVGs processed</span>
+<div class="w-32 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[25%] rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-gray-200/50 dark:hover:bg-gray-800/50 p-1.5 rounded-md text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+</button>
+<button class="hover:bg-gray-200/50 dark:hover:bg-gray-800/50 p-1.5 rounded-md text-outline transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[240px] mt-12 p-margin">
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Path Selection Area (Disabled State) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-container_padding opacity-60 cursor-not-allowed">
+<h2 class="font-h2 text-h2 mb-4 text-on-surface">Source &amp; Destination</h2>
+<div class="space-y-4">
+<div class="flex flex-col gap-1">
+<label class="font-label text-label text-outline uppercase">Source Directory</label>
+<div class="flex gap-2">
+<input class="flex-1 bg-surface-container border border-outline-variant rounded px-3 py-2 text-body font-body outline-none" disabled="" type="text" value="/Users/admin/Projects/Assets/SVGs"/>
+<button class="px-3 bg-surface-container text-outline border border-outline-variant rounded flex items-center gap-1 font-label" disabled="">
+<span class="material-symbols-outlined">folder</span>
+                                Browse
+                            </button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label text-label text-outline uppercase">Output Directory</label>
+<div class="flex gap-2">
+<input class="flex-1 bg-surface-container border border-outline-variant rounded px-3 py-2 text-body font-body outline-none" disabled="" type="text" value="/Users/admin/Projects/App/res/drawable"/>
+<button class="px-3 bg-surface-container text-outline border border-outline-variant rounded flex items-center gap-1 font-label" disabled="">
+<span class="material-symbols-outlined">folder</span>
+                                Browse
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Conversion Action (Active State) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-container_padding flex flex-col justify-between">
+<div>
+<h2 class="font-h2 text-h2 mb-2 text-on-surface">Process</h2>
+<p class="text-body-sm text-outline mb-4">Converting SVG paths to Android Vector XML format. This may take a moment.</p>
+</div>
+<button class="w-full py-4 bg-error text-on-error rounded-lg flex items-center justify-center gap-2 font-semibold active:scale-[0.98] transition-all shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stop</span>
+                    Stop Processing
+                </button>
+</div>
+<!-- Main Table Section -->
+<div class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-container_padding py-3 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<span class="font-label text-label text-on-surface uppercase tracking-wider">Processing Queue</span>
+<span class="text-body-sm text-outline">Showing 12 of 12 files</span>
+</div>
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-outline font-label text-label border-b border-outline-variant bg-surface-container-low/50">
+<th class="px-container_padding py-2 font-medium">Status</th>
+<th class="px-container_padding py-2 font-medium">Filename</th>
+<th class="px-container_padding py-2 font-medium">Size</th>
+<th class="px-container_padding py-2 font-medium">Target</th>
+<th class="px-container_padding py-2 font-medium">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1: Success -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-container_padding py-3">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">OK</span>
+</div>
+</td>
+<td class="px-container_padding py-3 font-medium">icon_home.svg</td>
+<td class="px-container_padding py-3 text-outline">2.4 KB</td>
+<td class="px-container_padding py-3 font-mono text-outline">ic_home.xml</td>
+<td class="px-container_padding py-3">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors">visibility</span>
+</td>
+</tr>
+<!-- Row 2: Success -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-container_padding py-3">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">OK</span>
+</div>
+</td>
+<td class="px-container_padding py-3 font-medium">icon_profile.svg</td>
+<td class="px-container_padding py-3 text-outline">1.8 KB</td>
+<td class="px-container_padding py-3 font-mono text-outline">ic_profile.xml</td>
+<td class="px-container_padding py-3">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-colors">visibility</span>
+</td>
+</tr>
+<!-- Row 3: Running -->
+<tr class="bg-primary/5 hover:bg-primary/10 transition-colors">
+<td class="px-container_padding py-3">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[16px] loading-spin">sync</span>
+<span class="text-body-sm font-semibold">Running</span>
+</div>
+</td>
+<td class="px-container_padding py-3 font-medium">hero_illustration.svg</td>
+<td class="px-container_padding py-3 text-outline">45.2 KB</td>
+<td class="px-container_padding py-3 font-mono text-outline">hero_illu.xml</td>
+<td class="px-container_padding py-3">
+<span class="material-symbols-outlined text-outline animate-pulse">pending</span>
+</td>
+</tr>
+<!-- Row 4: Queued -->
+<tr class="opacity-70 hover:bg-surface-container-low transition-colors">
+<td class="px-container_padding py-3">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-body-sm">Queued</span>
+</div>
+</td>
+<td class="px-container_padding py-3 font-medium">icon_settings.svg</td>
+<td class="px-container_padding py-3 text-outline">3.1 KB</td>
+<td class="px-container_padding py-3 font-mono text-outline">ic_settings.xml</td>
+<td class="px-container_padding py-3">
+<span class="material-symbols-outlined text-outline opacity-30">block</span>
+</td>
+</tr>
+<!-- Row 5: Queued -->
+<tr class="opacity-70 hover:bg-surface-container-low transition-colors">
+<td class="px-container_padding py-3">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="text-body-sm">Queued</span>
+</div>
+</td>
+<td class="px-container_padding py-3 font-medium">nav_arrow_down.svg</td>
+<td class="px-container_padding py-3 text-outline">0.8 KB</td>
+<td class="px-container_padding py-3 font-mono text-outline">nav_down.xml</td>
+<td class="px-container_padding py-3">
+<span class="material-symbols-outlined text-outline opacity-30">block</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Monospace Log Section -->
+<div class="col-span-12 bg-inverse-surface text-inverse-on-surface rounded-xl overflow-hidden shadow-lg border border-gray-800">
+<div class="px-container_padding py-2 bg-gray-800/50 flex justify-between items-center border-b border-gray-700">
+<span class="font-mono text-[11px] uppercase tracking-widest opacity-60">Process Log — v2.4.0</span>
+<div class="flex gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-red-500/30 border border-red-500/50"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-yellow-500/30 border border-yellow-500/50"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-green-500/30 border border-green-500/50"></div>
+</div>
+</div>
+<div class="p-container_padding font-mono text-mono h-48 overflow-y-auto bg-gray-900/40">
+<p class="opacity-50">[10:23:58] Initializing conversion engine...</p>
+<p class="opacity-50">[10:23:59] Scanning source directory: /Users/admin/Projects/Assets/SVGs</p>
+<p class="opacity-50">[10:23:59] Found 12 SVG files.</p>
+<p class="text-green-400">[10:24:01] Processing icon_home.svg...</p>
+<p class="text-green-400">[10:24:02] Success: icon_home.xml created (0.012s)</p>
+<p class="text-green-400">[10:24:02] Processing icon_profile.svg...</p>
+<p class="text-green-400">[10:24:03] Success: icon_profile.xml created (0.008s)</p>
+<p class="text-primary-fixed-dim">[10:24:04] Processing hero_illustration.svg...</p>
+<p class="text-primary-fixed-dim">[10:24:04] Parsing heavy path data (452 nodes)...</p>
+<p class="text-primary-fixed-dim animate-pulse">[10:24:05] Optimizing viewport matrices...</p>
+<p class="inline-block border-r-2 border-white animate-pulse"> </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Overlay / Feedback -->
+<div class="fixed bottom-margin right-margin z-50">
+<div class="bg-surface-container-lowest border border-outline-variant shadow-xl rounded-lg p-3 flex items-center gap-3 pr-4">
+<div class="w-2 h-2 rounded-full bg-primary animate-ping"></div>
+<span class="text-body-sm font-medium">Estimated time remaining: 00:42</span>
+</div>
+</div>
+</body></html>

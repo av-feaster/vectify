@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "secondary": "#4c4aca",
+                  "on-primary-fixed": "#001a41",
+                  "on-error-container": "#93000a",
+                  "primary-container": "#0070eb",
+                  "tertiary-container": "#c64f00",
+                  "surface-tint": "#005bc1",
+                  "on-primary-container": "#fefcff",
+                  "secondary-fixed-dim": "#c2c1ff",
+                  "tertiary-fixed": "#ffdbcc",
+                  "surface-variant": "#e3e2e7",
+                  "inverse-on-surface": "#f1f0f5",
+                  "secondary-fixed": "#e2dfff",
+                  "surface-container-highest": "#e3e2e7",
+                  "error-container": "#ffdad6",
+                  "outline-variant": "#c1c6d7",
+                  "surface-dim": "#dad9df",
+                  "on-tertiary-fixed": "#351000",
+                  "outline": "#717786",
+                  "surface-container-lowest": "#ffffff",
+                  "surface-container-low": "#f4f3f8",
+                  "on-surface-variant": "#414755",
+                  "error": "#ba1a1a",
+                  "on-secondary": "#ffffff",
+                  "tertiary-fixed-dim": "#ffb595",
+                  "on-tertiary-container": "#fffbff",
+                  "on-secondary-fixed-variant": "#3631b4",
+                  "on-primary": "#ffffff",
+                  "on-tertiary-fixed-variant": "#7c2e00",
+                  "on-secondary-fixed": "#0c006a",
+                  "on-background": "#1a1b1f",
+                  "on-error": "#ffffff",
+                  "on-surface": "#1a1b1f",
+                  "primary-fixed": "#d8e2ff",
+                  "background": "#faf9fe",
+                  "primary-fixed-dim": "#adc6ff",
+                  "surface-container": "#eeedf3",
+                  "primary": "#0058bc",
+                  "inverse-surface": "#2f3034",
+                  "tertiary": "#9e3d00",
+                  "surface": "#faf9fe",
+                  "secondary-container": "#6664e4",
+                  "on-secondary-container": "#fffbff",
+                  "surface-container-high": "#e9e7ed",
+                  "on-primary-fixed-variant": "#004493",
+                  "inverse-primary": "#adc6ff",
+                  "surface-bright": "#faf9fe",
+                  "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "gutter": "16px",
+                  "unit": "4px",
+                  "margin": "24px",
+                  "container_padding": "20px",
+                  "sidebar_width": "240px"
+          },
+          "fontFamily": {
+                  "body": ["Inter"],
+                  "body-sm": ["Inter"],
+                  "h1": ["Inter"],
+                  "label": ["Inter"],
+                  "h2": ["Inter"],
+                  "mono": ["Space Grotesk"]
+          },
+          "fontSize": {
+                  "body": ["13px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                  "body-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                  "h1": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                  "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                  "h2": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "mono": ["12px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 18px;
+    }
+    .glass-sidebar {
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+    .mac-shadow {
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 10px 30px rgba(0,0,0,0.4);
+    }
+    /* Dark mode overrides for scrollbar */
+    .dark ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #1a1b1f;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #414755;
+      border-radius: 4px;
+    }
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: #717786;
+    }
+  </style>
+</head>
+<body class="bg-[#121316] font-body text-white selection:bg-primary-container selection:text-white h-screen flex overflow-hidden">
+<!-- SideNavBar Component -->
+<aside class="fixed left-0 top-0 h-screen w-[240px] border-r border-white/5 bg-[#1a1b1f]/80 backdrop-blur-xl flex flex-col py-4 gap-1 z-30 glass-sidebar">
+<div class="text-lg font-bold text-white px-4 py-2 mb-4">
+<div class="flex flex-col">
+<span class="text-primary-container font-extrabold tracking-tight">VectorConverter</span>
+<span class="text-[10px] font-medium text-outline uppercase tracking-widest">SVG to Android Vector</span>
+</div>
+</div>
+<nav class="flex-1 space-y-0.5">
+<!-- Active Item: Convert -->
+<a class="bg-primary-container text-white rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 active:scale-[0.98] transition-all shadow-lg shadow-primary-container/20" href="#">
+<span class="material-symbols-outlined" data-icon="transform">transform</span>
+<span class="font-label">Convert</span>
+</a>
+<a class="text-gray-400 hover:text-white hover:bg-white/5 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="build">build</span>
+<span class="font-label">Repair</span>
+</a>
+<a class="text-gray-400 hover:text-white hover:bg-white/5 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+<span class="font-label">Environment</span>
+</a>
+<a class="text-gray-400 hover:text-white hover:bg-white/5 rounded-md mx-2 px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-label">About</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<div class="p-3 bg-white/5 rounded-lg border border-white/10">
+<p class="text-[11px] font-medium text-gray-400 mb-2">Engine Settings</p>
+<div class="flex items-center justify-between mb-2">
+<span class="text-body-sm text-gray-300">SVGO Plugin</span>
+<div class="w-8 h-4 bg-primary-container rounded-full relative">
+<div class="absolute right-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-body-sm text-gray-300">Overwrite</span>
+<div class="w-8 h-4 bg-white/10 rounded-full relative">
+<div class="absolute left-0.5 top-0.5 w-3 h-3 bg-gray-400 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-1 flex flex-col h-screen overflow-hidden bg-[#121316]">
+<!-- TopAppBar Component -->
+<header class="h-12 border-b border-white/5 bg-[#1a1b1f]/60 backdrop-blur-md flex items-center justify-between px-6 z-20">
+<div class="flex items-center gap-2">
+<span class="text-gray-400 text-body-sm font-medium">Untitled Project</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 text-gray-400 hover:text-white hover:bg-white/5 p-1.5 rounded-md transition-colors">
+<span class="material-symbols-outlined" data-icon="folder_open">folder_open</span>
+<span class="text-body-sm font-medium">Open Project</span>
+</button>
+<button class="flex items-center gap-2 text-gray-400 hover:text-white hover:bg-white/5 p-1.5 rounded-md transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-6 w-px bg-white/10"></div>
+<button class="bg-white/5 text-gray-600 cursor-not-allowed px-4 py-1 rounded font-label flex items-center gap-2" disabled="">
+<span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span>
+          Convert
+        </button>
+</div>
+</header>
+<!-- App Content Canvas -->
+<div class="flex-1 overflow-y-auto p-margin space-y-gutter">
+<!-- Folders Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Source Folder Card -->
+<div class="bg-[#1a1b1f] border border-white/10 rounded-lg p-4 space-y-3 shadow-sm">
+<div class="flex items-center justify-between">
+<label class="text-body-sm font-medium text-gray-500 uppercase tracking-wider">Source Folder</label>
+<span class="text-[10px] text-primary-container font-bold">REQUIRED</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-black/20 px-3 py-2 rounded border border-white/5 flex items-center overflow-hidden">
+<span class="material-symbols-outlined text-gray-500 mr-2" data-icon="folder">folder</span>
+<span class="text-body text-gray-300 truncate">/Users/admin/Projects/Assets/icons/svg/...</span>
+</div>
+<button class="bg-white/5 border border-white/10 text-white hover:bg-white/10 px-3 py-2 rounded text-body-sm font-medium transition-colors whitespace-nowrap">
+              Reveal in Finder
+            </button>
+</div>
+</div>
+<!-- Output Folder Card -->
+<div class="bg-[#1a1b1f] border border-white/10 rounded-lg p-4 space-y-3 shadow-sm">
+<div class="flex items-center justify-between">
+<label class="text-body-sm font-medium text-gray-500 uppercase tracking-wider">Output Folder</label>
+<span class="text-[10px] text-gray-500 italic">Compose helper text</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex-1 bg-black/20 px-3 py-2 rounded border border-white/5 flex items-center overflow-hidden">
+<span class="material-symbols-outlined text-gray-500 mr-2" data-icon="output">output</span>
+<span class="text-body text-gray-500 truncate">Select destination directory...</span>
+</div>
+<button class="bg-primary-container text-white hover:bg-primary px-3 py-2 rounded text-body-sm font-medium transition-colors whitespace-nowrap shadow-md shadow-primary-container/10">
+              Choose
+            </button>
+</div>
+</div>
+</section>
+<!-- Empty State / Main Table Container -->
+<section class="flex-1 min-h-[400px] bg-[#1a1b1f] border border-white/10 rounded-lg flex flex-col relative overflow-hidden shadow-sm">
+<!-- Table Header (Always visible) -->
+<div class="grid grid-cols-12 bg-black/20 border-b border-white/10 text-body-sm font-medium text-gray-400">
+<div class="col-span-4 px-4 py-2">Name</div>
+<div class="col-span-2 px-4 py-2">Status</div>
+<div class="col-span-3 px-4 py-2">Output</div>
+<div class="col-span-3 px-4 py-2">Message</div>
+</div>
+<!-- Empty State Content -->
+<div class="flex-1 flex flex-col items-center justify-center p-12 text-center">
+<div class="w-16 h-16 rounded-full bg-black/20 flex items-center justify-center mb-4 border border-white/5">
+<span class="material-symbols-outlined text-gray-400 text-3xl" data-icon="upload_file">upload_file</span>
+</div>
+<h2 class="font-h2 text-white mb-2">Choose a folder with SVGs to begin</h2>
+<p class="text-body text-gray-400 max-w-sm">
+            Drag and drop a folder here or use the navigation above to select your source directory. We'll automatically scan for SVG files.
+          </p>
+<div class="mt-8 flex gap-3">
+<button class="flex items-center gap-2 px-6 py-2 bg-white/5 border border-white/10 rounded text-white hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-label">Add Files</span>
+</button>
+</div>
+</div>
+<!-- Hidden/Empty Table Body placeholder -->
+<div class="hidden opacity-0">
+<!-- Rows would go here -->
+</div>
+</section>
+<!-- Bottom Log Section (Collapsed/Empty State) -->
+<section class="border border-white/10 rounded-lg bg-[#1a1b1f] overflow-hidden shadow-sm">
+<div class="flex items-center justify-between px-4 py-2 bg-black/20 border-b border-white/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400" data-icon="terminal">terminal</span>
+<span class="text-body-sm font-medium text-gray-300">Conversion Log</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 text-[10px] font-bold text-gray-500 hover:text-white uppercase transition-colors">Clear</button>
+<div class="w-px h-3 bg-white/10 mx-1"></div>
+<button class="px-2 py-1 text-[10px] font-bold text-gray-500 hover:text-white uppercase transition-colors">Copy</button>
+</div>
+</div>
+<div class="p-4 min-h-[80px] font-mono text-mono text-gray-500 bg-black/10">
+<p>Ready for conversion tasks...</p>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Decoration (Visual Only) -->
+<div class="fixed bottom-6 right-6 pointer-events-none select-none opacity-20 group">
+<div class="w-48 h-48 bg-primary-container rounded-full blur-3xl -z-10 absolute -right-12 -bottom-12 opacity-30"></div>
+<img class="w-32 h-32 object-cover rounded-xl mac-shadow rotate-3 grayscale brightness-75" data-alt="A highly detailed close-up shot of an abstract 3D glass sculpture reflecting soft prismatic light against a minimalist studio background. The aesthetic is clean, corporate and modern with a focus on high-fidelity transparency and subtle depth. The scene is illuminated by cool, high-key studio lighting that accentuates the sharp geometric edges of the glass, aligning perfectly with a professional productivity software visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlhA_ZV6vqkOtVyUY4Wg93VIiLBz9vyv_H-ZCdntjMuc3Jm9Jr7yA2T8AgKZjm3QK_zX1lekhOLP8SSkBPC-rW4-4IRaT1AImVtwlswbaytv3WLbIUl_0Un7ICtyXgd6l6wbIiqcj68KkKvWeFwCBhu-QfRTVgw7MVnfI-xpobyHdTQlHOote7c61jPlLo2AMgzkh0SYxDpIoowe-pr1fOr_w6cyqCO75K_1yAVaN_ivao6mFIdeOhiAcGhHJnV9hZGij4ycdk9A"/>
+</div>
+</body></html>

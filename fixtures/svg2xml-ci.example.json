@@ -1,0 +1,10 @@
+{
+  "input_dir": "icons-src",
+  "output_dir": "composeApp/src/commonMain/composeResources/drawable",
+  "no_svgo": false,
+  "force": false,
+  "move_after_success": false,
+  "archive_xml_dir": null,
+  "repair_dir": null,
+  "svgo_config": null
+}
