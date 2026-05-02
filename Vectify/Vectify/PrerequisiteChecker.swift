@@ -161,7 +161,7 @@ enum PrerequisiteChecker {
             guard FileManager.default.isExecutableFile(atPath: path) else { continue }
             if let home = javaHomeFromShowSettings(javaPath: path) { return home }
         }
-        if let whichJava = which("java"), FileManager.default.isExecutableFile(atPath: whichJava) {
+        if let whichJava = which(name: "java"), FileManager.default.isExecutableFile(atPath: whichJava) {
             return javaHomeFromShowSettings(javaPath: whichJava)
         }
         return nil
@@ -214,15 +214,29 @@ enum PrerequisiteChecker {
     }
 
     static func nodeAvailable() -> Bool {
-        FileManager.default.isExecutableFile(atPath: "/usr/bin/which")
-            ? which("node") != nil
-            : whichFallback("node") != nil
+        nodeExecutablePath() != nil
     }
 
-    private static func which(_ name: String) -> String? {
+    /// Resolved `node` binary path, if any (same logic as `nodeAvailable()`).
+    /// GUI apps often inherit a minimal `PATH`; we check common install locations first, then `which` with a Homebrew-friendly `PATH` (same idea as `SvgoRunner`).
+    static func nodeExecutablePath() -> String? {
+        for path in ["/opt/homebrew/bin/node", "/usr/local/bin/node", "/usr/bin/node"] {
+            if FileManager.default.isExecutableFile(atPath: path) { return path }
+        }
+        if FileManager.default.isExecutableFile(atPath: "/usr/bin/which") {
+            if let found = which(name: "node") { return found }
+        }
+        return whichFallback("node")
+    }
+
+    private static func which(name: String) -> String? {
         let p = Process()
         p.executableURL = URL(fileURLWithPath: "/usr/bin/which")
         p.arguments = [name]
+        var env = ProcessInfo.processInfo.environment
+        let pathPrefix = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+        env["PATH"] = pathPrefix + ":" + (env["PATH"] ?? "")
+        p.environment = env
         let pipe = Pipe()
         p.standardOutput = pipe
         p.standardError = FileHandle.nullDevice
@@ -254,7 +268,7 @@ enum PrerequisiteChecker {
         if let v = java.versionLine { lines.append(v) }
         lines.append("vd-tool bundled: \(vd.isBundled)")
         if let p = vd.bundledLauncherPath { lines.append("vd-tool path: \(p)") }
-        lines.append("node in PATH: \(node)")
+        lines.append("Node.js (SVGO optional): \(node ? "found" : "not found — install only if you use SVGO")")
         return lines.joined(separator: "\n")
     }
 }

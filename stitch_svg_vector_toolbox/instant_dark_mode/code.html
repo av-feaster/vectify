@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VectorShell - Instant Convert</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#d8e2ff",
+                    "on-surface": "#1a1b1f",
+                    "on-secondary-fixed": "#0c006a",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#9e3d00",
+                    "surface-container-low": "#f4f3f8",
+                    "tertiary-container": "#c64f00",
+                    "surface-tint": "#005bc1",
+                    "outline-variant": "#c1c6d7",
+                    "surface-container-highest": "#e3e2e7",
+                    "on-tertiary-container": "#fffbff",
+                    "surface-container-high": "#e9e7ed",
+                    "on-tertiary-fixed": "#351000",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#eeedf3",
+                    "on-background": "#1a1b1f",
+                    "on-primary-fixed": "#001a41",
+                    "on-primary-container": "#fefcff",
+                    "outline": "#717786",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#c2c1ff",
+                    "tertiary-fixed-dim": "#ffb595",
+                    "primary-container": "#0070eb",
+                    "inverse-surface": "#2f3034",
+                    "primary": "#0058bc",
+                    "on-tertiary-fixed-variant": "#7c2e00",
+                    "on-surface-variant": "#414755",
+                    "tertiary-fixed": "#ffdbcc",
+                    "secondary-fixed": "#e2dfff",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#004493",
+                    "surface-dim": "#dad9df",
+                    "surface-bright": "#faf9fe",
+                    "secondary-container": "#6664e4",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#3631b4",
+                    "inverse-on-surface": "#f1f0f5",
+                    "surface-variant": "#e3e2e7",
+                    "primary-fixed-dim": "#adc6ff",
+                    "on-primary": "#ffffff",
+                    "secondary": "#4c4aca",
+                    "background": "#faf9fe",
+                    "surface": "#faf9fe",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#fffbff",
+                    "inverse-primary": "#adc6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "margin": "24px",
+                    "sidebar_width": "240px",
+                    "container_padding": "20px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "body": ["Inter"],
+                    "h2": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "mono": ["Space Grotesk"],
+                    "label": ["Inter"],
+                    "h1": ["Inter"]
+            },
+            "fontSize": {
+                    "body": ["13px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "h2": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["11px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                    "mono": ["12px", {"lineHeight": "18px", "letterSpacing": "0", "fontWeight": "400"}],
+                    "label": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "h1": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 18px;
+        }
+        .drag-zone-pattern {
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 font-body text-on-primary-container antialiased selection:bg-blue-500/30">
+<!-- SideNavBar Component -->
+<aside class="fixed h-screen w-[240px] border-r border-zinc-800 bg-zinc-900/80 backdrop-blur-xl z-50 flex flex-col p-4 gap-1">
+<div class="px-3 py-4 mb-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-900/20">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">transform</span>
+</div>
+<div>
+<h1 class="text-sm font-bold text-zinc-50 leading-tight">VectorShell</h1>
+<p class="text-[11px] text-zinc-500 font-medium tracking-wide">SVG Utility</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-zinc-400 hover:bg-zinc-800/50 rounded-md px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="transform">transform</span>
+<span class="font-['Inter'] text-[13px] font-medium tracking-tight">Convert</span>
+</a>
+<a class="bg-blue-600 text-white rounded-md px-3 py-1.5 flex items-center gap-3 transition-transform duration-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-['Inter'] text-[13px] font-medium tracking-tight">Instant</span>
+</a>
+<a class="text-zinc-400 hover:bg-zinc-800/50 rounded-md px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="handyman">handyman</span>
+<span class="font-['Inter'] text-[13px] font-medium tracking-tight">Repair</span>
+</a>
+<a class="text-zinc-400 hover:bg-zinc-800/50 rounded-md px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+<span class="font-['Inter'] text-[13px] font-medium tracking-tight">Environment</span>
+</a>
+<div class="mt-auto pt-4">
+<a class="text-zinc-400 hover:bg-zinc-800/50 rounded-md px-3 py-1.5 flex items-center gap-3 transition-colors active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-['Inter'] text-[13px] font-medium tracking-tight">About</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] min-h-screen bg-zinc-950 relative">
+<!-- TopAppBar Component -->
+<header class="sticky top-0 w-full z-40 border-b border-zinc-900 bg-zinc-950/50 backdrop-blur-md flex items-center justify-between h-12 px-6">
+<div class="flex items-center gap-4">
+<span class="text-sm font-black text-zinc-50 font-['Inter']">Instant Convert</span>
+<span class="h-4 w-px bg-zinc-800"></span>
+<span class="text-[11px] font-mono text-zinc-500 uppercase tracking-widest">In-Memory Mode</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-zinc-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center text-zinc-400 hover:text-zinc-100 transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-6 max-w-6xl mx-auto space-y-8">
+<!-- Drag & Drop Zone -->
+<section class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl blur opacity-10 group-hover:opacity-20 transition duration-500"></div>
+<div class="relative flex flex-col items-center justify-center py-20 px-10 border-2 border-dashed border-zinc-800 bg-zinc-900/40 rounded-xl drag-zone-pattern hover:border-blue-500/50 transition-all cursor-pointer">
+<div class="w-16 h-16 bg-blue-600/10 rounded-full flex items-center justify-center mb-4 ring-1 ring-blue-500/20">
+<span class="material-symbols-outlined text-blue-400 !text-3xl" data-icon="upload_file">upload_file</span>
+</div>
+<h2 class="text-h2 font-h2 text-zinc-100 mb-1">Drop SVGs here to convert instantly</h2>
+<p class="text-body-sm text-zinc-500">Fast, in-memory conversion to Android Vector Drawables (.xml)</p>
+<div class="mt-8 flex gap-3">
+<button class="bg-zinc-800 hover:bg-zinc-700 text-zinc-100 px-4 py-2 rounded-lg text-label font-label flex items-center gap-2 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                            Select Files
+                        </button>
+</div>
+</div>
+</section>
+<!-- Current Session Section -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<h3 class="text-h2 font-h2 text-zinc-100">Current Session</h3>
+<span class="bg-zinc-800 px-2 py-0.5 rounded text-[10px] font-mono text-zinc-400">4 FILES</span>
+</div>
+<button class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg text-label font-label flex items-center gap-2 transition-all active:scale-[0.98] shadow-lg shadow-blue-900/20">
+<span class="material-symbols-outlined !text-[16px]" data-icon="folder_zip">folder_zip</span>
+                        Download All (ZIP)
+                    </button>
+</div>
+<!-- Asset List -->
+<div class="bg-zinc-900/20 border border-zinc-900 rounded-xl overflow-hidden divide-y divide-zinc-900/50">
+<!-- Row 1 -->
+<div class="p-4 flex items-center justify-between hover:bg-zinc-800/20 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-zinc-900 rounded flex items-center justify-center border border-zinc-800">
+<span class="material-symbols-outlined text-zinc-500" data-icon="vector_library">slide_library</span>
+</div>
+<div>
+<div class="text-body font-medium text-zinc-100">hero_illustration_v2.svg</div>
+<div class="text-[10px] font-mono text-zinc-500 uppercase tracking-tighter">14.2 KB • PROCESSED</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded-full">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+<span class="text-[11px] font-semibold">Converted</span>
+</div>
+<button class="text-blue-400 hover:text-blue-300 font-label text-[12px] flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                Download .xml
+                                <span class="material-symbols-outlined !text-[14px]" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="p-4 flex items-center justify-between hover:bg-zinc-800/20 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-zinc-900 rounded flex items-center justify-center border border-zinc-800 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A macro close-up of a digital vector icon rendering on a high-resolution dark mode screen. The icon features sleek, white geometric paths against a deep obsidian background, symbolizing technical precision. Subtle blue light glows from the edges of the path, creating a modern, professional software environment feel. The lighting is focused and cinematic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtC5lowoVsNvAk6Qg7fxccyh6D2osh_5qXz4uRAmepOg_QVYf11GatMvGlpWwyjBKgOPe_aiOUXArcnc9gPu-RemEyIICCKpbBZqwdS06Nr2KRUFUxhuBV6EkRhnu5_FFBe1heW9Svr3E7hujB9otYDeuwGGVVWHE4M0TRNdqqna_XswsHY6iKsPTPS3qgbcmxpo06RtatbVHdlRjSI7FUs5PsLinfAIctlXWAeNYVJh8HWPIjXAN92ar7yYTJ9_Mr-v6nWD7e1g"/>
+</div>
+<div>
+<div class="text-body font-medium text-zinc-100">user_avatar_placeholder.svg</div>
+<div class="text-[10px] font-mono text-zinc-500 uppercase tracking-tighter">2.8 KB • PROCESSED</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded-full">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+<span class="text-[11px] font-semibold">Converted</span>
+</div>
+<button class="text-blue-400 hover:text-blue-300 font-label text-[12px] flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                Download .xml
+                                <span class="material-symbols-outlined !text-[14px]" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="p-4 flex items-center justify-between hover:bg-zinc-800/20 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-zinc-900 rounded flex items-center justify-center border border-zinc-800">
+<span class="material-symbols-outlined text-zinc-500" data-icon="category">category</span>
+</div>
+<div>
+<div class="text-body font-medium text-zinc-100">dashboard_icons_set.svg</div>
+<div class="text-[10px] font-mono text-zinc-500 uppercase tracking-tighter">45.1 KB • PROCESSED</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded-full">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+<span class="text-[11px] font-semibold">Converted</span>
+</div>
+<button class="text-blue-400 hover:text-blue-300 font-label text-[12px] flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                Download .xml
+                                <span class="material-symbols-outlined !text-[14px]" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="p-4 flex items-center justify-between hover:bg-zinc-800/20 transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-zinc-900 rounded flex items-center justify-center border border-zinc-800">
+<span class="material-symbols-outlined text-zinc-500" data-icon="shapes">shapes</span>
+</div>
+<div>
+<div class="text-body font-medium text-zinc-100">background_pattern_light.svg</div>
+<div class="text-[10px] font-mono text-zinc-500 uppercase tracking-tighter">112.0 KB • PROCESSED</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded-full">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+<span class="text-[11px] font-semibold">Converted</span>
+</div>
+<button class="text-blue-400 hover:text-blue-300 font-label text-[12px] flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                                Download .xml
+                                <span class="material-symbols-outlined !text-[14px]" data-icon="download">download</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Usage Info (Bento Style Footer) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10">
+<div class="bg-zinc-900/30 p-5 rounded-xl border border-zinc-900 flex flex-col gap-2">
+<span class="material-symbols-outlined text-zinc-500" data-icon="security">security</span>
+<h4 class="text-label font-bold text-zinc-200">Local Privacy</h4>
+<p class="text-body-sm text-zinc-500 leading-relaxed">No files are uploaded to any server. All transformations happen locally in your browser's memory session.</p>
+</div>
+<div class="bg-zinc-900/30 p-5 rounded-xl border border-zinc-900 flex flex-col gap-2">
+<span class="material-symbols-outlined text-zinc-500" data-icon="bolt">bolt</span>
+<h4 class="text-label font-bold text-zinc-200">Android Optimized</h4>
+<p class="text-body-sm text-zinc-500 leading-relaxed">Generated XML is optimized for the latest Android Vector Drawable specifications, supporting gradients and clipping paths.</p>
+</div>
+<div class="bg-zinc-900/30 p-5 rounded-xl border border-zinc-900 flex flex-col gap-2">
+<span class="material-symbols-outlined text-zinc-500" data-icon="memory">memory</span>
+<h4 class="text-label font-bold text-zinc-200">In-Memory Engine</h4>
+<p class="text-body-sm text-zinc-500 leading-relaxed">Our WASM-powered conversion engine processes thousands of nodes per second with zero latency.</p>
+</div>
+</div>
+</div>
+<!-- System Logs / Activity Monospace View -->
+<div class="mx-6 mb-6 mt-12 bg-zinc-900 rounded-lg border border-zinc-800 p-4 font-mono text-[11px] text-zinc-400 h-32 overflow-y-auto">
+<div class="flex gap-4">
+<span class="text-blue-500">[SYSTEM]</span>
+<span>Session started at 14:22:01</span>
+</div>
+<div class="flex gap-4 mt-1">
+<span class="text-emerald-500">[SUCCESS]</span>
+<span>Parsed hero_illustration_v2.svg: 154 path nodes identified</span>
+</div>
+<div class="flex gap-4 mt-1">
+<span class="text-emerald-500">[SUCCESS]</span>
+<span>Generated VectorDrawable XML: 0 warnings found</span>
+</div>
+<div class="flex gap-4 mt-1">
+<span class="text-zinc-500">[INFO]</span>
+<span>Ready for next input. Memory usage: 1.4MB</span>
+</div>
+<div class="flex gap-4 mt-1">
+<span class="text-zinc-500">[INFO]</span>
+<span class="animate-pulse">_</span>
+</div>
+</div>
+</main>
+</body></html>

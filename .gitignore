@@ -7,6 +7,19 @@
 # Python
 __pycache__/
 *.py[cod]
+.venv/
+venv/
+
+# Secrets and machine-local config (never commit real keys)
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.mobileprovision
+
+# Node (local SVGO / tooling)
+node_modules/
 
 # Xcode (local DerivedData when using -derivedDataPath under Vectify/)
 Vectify/.derivedData/

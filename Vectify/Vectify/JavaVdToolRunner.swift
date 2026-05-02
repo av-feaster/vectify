@@ -6,6 +6,7 @@ enum JavaVdToolError: LocalizedError {
     case cannotCreateOutputDir(String)
     case vdToolFailed(code: Int32, stderr: String)
     case missingOutput
+    case previewFileMissing(String)
 
     var errorDescription: String? {
         switch self {
@@ -19,6 +20,8 @@ enum JavaVdToolError: LocalizedError {
             return "vd-tool exited with \(code): \(stderr)"
         case .missingOutput:
             return "vd-tool did not produce the expected XML file."
+        case .previewFileMissing(let path):
+            return "Vector drawable not found at \(path)."
         }
     }
 }
@@ -79,5 +82,47 @@ enum JavaVdToolRunner {
             throw JavaVdToolError.missingOutput
         }
         return data
+    }
+
+    /// Runs bundled `vd-tool -d -in <xml>` and blocks until the preview process exits (Swing UI).
+    static func displayVectorDrawable(at xmlFile: URL) throws {
+        guard let launcher = PrerequisiteChecker.bundledVdToolLauncherPath() else {
+            throw JavaVdToolError.noBundledVdTool
+        }
+        let java = PrerequisiteChecker.javaRuntime()
+        guard java.isInstalled, let javaHome = java.javaHome else {
+            throw JavaVdToolError.javaMissing
+        }
+        guard FileManager.default.fileExists(atPath: xmlFile.path) else {
+            throw JavaVdToolError.previewFileMissing(xmlFile.path)
+        }
+
+        let p = Process()
+        p.executableURL = URL(fileURLWithPath: launcher)
+        p.arguments = [
+            "-d",
+            "-in", xmlFile.path,
+        ]
+        var env = ProcessInfo.processInfo.environment
+        env["JAVA_HOME"] = javaHome
+        let pathPrefix = "/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/usr/local/bin"
+        env["PATH"] = pathPrefix + ":" + (env["PATH"] ?? "")
+        p.environment = env
+        p.currentDirectoryURL = xmlFile.deletingLastPathComponent()
+
+        let errPipe = Pipe()
+        p.standardError = errPipe
+        p.standardOutput = FileHandle.nullDevice
+        p.standardInput = FileHandle.nullDevice
+
+        try p.run()
+        p.waitUntilExit()
+
+        let errData = errPipe.fileHandleForReading.readDataToEndOfFile()
+        let errStr = String(data: errData, encoding: .utf8) ?? ""
+
+        guard p.terminationStatus == 0 else {
+            throw JavaVdToolError.vdToolFailed(code: p.terminationStatus, stderr: String(errStr.prefix(2000)))
+        }
     }
 }

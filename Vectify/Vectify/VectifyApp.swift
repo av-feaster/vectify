@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct VectifyApp: App {
+    @NSApplicationDelegateAdaptor(VectifyAppDelegate.self) private var appDelegate
+
     var body: some Scene {
         WindowGroup {
             RootView()

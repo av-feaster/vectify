@@ -2,6 +2,7 @@ import SwiftUI
 
 private enum SidebarSection: String, CaseIterable, Identifiable, Hashable {
     case convert
+    case instant
     case repair
     case environment
     case about
@@ -11,6 +12,7 @@ private enum SidebarSection: String, CaseIterable, Identifiable, Hashable {
     var title: String {
         switch self {
         case .convert: return "Convert"
+        case .instant: return "Instant"
         case .repair: return "Repair"
         case .environment: return "Environment"
         case .about: return "About"
@@ -20,6 +22,7 @@ private enum SidebarSection: String, CaseIterable, Identifiable, Hashable {
     var symbol: String {
         switch self {
         case .convert: return "arrow.triangle.2.circlepath"
+        case .instant: return "bolt.fill"
         case .repair: return "hammer"
         case .environment: return "gearshape.2"
         case .about: return "info.circle"
@@ -93,6 +96,8 @@ struct RootView: View {
     @State private var selection: SidebarSection = .convert
     @State private var columnVisibility: NavigationSplitViewVisibility = .all
     @State private var conversionModel = ConversionViewModel()
+    @State private var instantModel = InstantViewModel()
+    @State private var repairModel = RepairViewModel()
     @State private var showJavaOverlay: Bool
     @State private var hoveredSidebar: SidebarSection?
 
@@ -106,8 +111,10 @@ struct RootView: View {
         switch selection {
         case .convert:
             ConvertView(model: conversionModel)
+        case .instant:
+            InstantView(model: instantModel)
         case .repair:
-            RepairView()
+            RepairView(model: repairModel)
         case .environment:
             EnvironmentDiagnosticsView()
         case .about:
@@ -174,7 +181,6 @@ struct RootView: View {
             } detail: {
                 detailContent
                     .id(selection)
-                    .navigationTitle(selection.title)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .tint(AppTheme.primaryContainer)

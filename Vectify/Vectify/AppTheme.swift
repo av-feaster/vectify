@@ -13,7 +13,8 @@ enum AppTheme {
 
     // Surfaces (dark tokens from environment_dark_mode)
     static let surfaceContainerLowest = Color(red: 0.059, green: 0.067, blue: 0.082) // #0f1115
-    static let surface = Color(red: 0.102, green: 0.106, blue: 0.122) // #1a1b1f
+    static let surfaceContainerLow = Color(red: 0.102, green: 0.106, blue: 0.122) // #1a1b1f
+    static let surface = surfaceContainerLow
     static let surfaceContainer = Color(red: 0.118, green: 0.122, blue: 0.145) // #1e1f25
     static let surfaceContainerHigh = Color(red: 0.157, green: 0.165, blue: 0.184) // #282a2f
 
