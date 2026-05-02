@@ -14,6 +14,13 @@ STAGE="$ROOT/build/dmg-stage"
 DMG_OUT="$ROOT/build/Vectify.dmg"
 SIGNING_IDENTITY="${SIGNING_IDENTITY:-}"
 
+# Only override CODE_SIGN_IDENTITY when SIGNING_IDENTITY is set (e.g. Developer ID).
+# Passing CODE_SIGN_IDENTITY= empty would clear the project's "Apple Development" pin.
+ARCHIVE_SIGN_FLAGS=(CODE_SIGNING_ALLOWED=YES)
+if [[ -n "$SIGNING_IDENTITY" ]]; then
+  ARCHIVE_SIGN_FLAGS=(CODE_SIGN_IDENTITY="$SIGNING_IDENTITY" CODE_SIGNING_ALLOWED=YES)
+fi
+
 echo "==> Building $SCHEME ($CONFIG)"
 xcodebuild \
   -project "$PROJECT" \
@@ -23,8 +30,7 @@ xcodebuild \
   -derivedDataPath "$DERIVED" \
   -archivePath "$ARCHIVE" \
   archive \
-  CODE_SIGN_IDENTITY="${SIGNING_IDENTITY}" \
-  CODE_SIGNING_ALLOWED=YES
+  "${ARCHIVE_SIGN_FLAGS[@]}"
 
 APP_SRC="$ARCHIVE/Products/Applications/Vectify.app"
 if [[ ! -d "$APP_SRC" ]]; then
