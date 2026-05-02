@@ -6,7 +6,7 @@
 
 The app invokes the Unix launcher at `Vendor/vd-tool/bin/vd-tool` inside the target folder (copied to `Contents/Resources/Vendor/vd-tool/` in the built app, with `lib/*.jar` beside `bin/`), not the Node `cli.js` entry.
 
-**Note:** Do not nest this tree under a source folder named `Resources/` at the project root—Xcode’s synchronized file groups can flatten those into the bundle and break the `bin`/`lib` layout. The repo keeps `Svg2Xml/Svg2Xml/Vendor/vd-tool/`.
+**Note:** Do not nest this tree under a source folder named `Resources/` at the project root—Xcode’s synchronized file groups can flatten those into the bundle and break the `bin`/`lib` layout. The repo keeps `Vectify/Vectify/Vendor/vd-tool/`.
 
 ## Refresh vendor copy
 

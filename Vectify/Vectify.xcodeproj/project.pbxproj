@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		59DABF552FA55A1600208C52 /* Svg2Xml.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Svg2Xml.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		59DABF552FA55A1600208C52 /* Vectify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vectify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		59DABF572FA55A1600208C52 /* Svg2Xml */ = {
+		59DABF572FA55A1600208C52 /* Vectify */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Svg2Xml;
+			path = Vectify;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -38,7 +38,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Svg2Xml/Vendor/vd-tool/bin/vd-tool",
+				"${SRCROOT}/Vectify/Vendor/vd-tool/bin/vd-tool",
 			);
 			name = "Copy Vendor vd-tool";
 			outputFileListPaths = (
@@ -48,7 +48,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nSRC=\"${SRCROOT}/Svg2Xml/Vendor/vd-tool\"\nDST_ROOT=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Vendor\"\nmkdir -p \"${DST_ROOT}\"\nrm -rf \"${DST_ROOT}/vd-tool\"\nditto \"${SRC}\" \"${DST_ROOT}/vd-tool\"\n";
+			shellScript = "set -e\nSRC=\"${SRCROOT}/Vectify/Vendor/vd-tool\"\nDST_ROOT=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Vendor\"\nmkdir -p \"${DST_ROOT}\"\nrm -rf \"${DST_ROOT}/vd-tool\"\nditto \"${SRC}\" \"${DST_ROOT}/vd-tool\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -56,7 +56,7 @@
 		59DABF4C2FA55A1600208C52 = {
 			isa = PBXGroup;
 			children = (
-				59DABF572FA55A1600208C52 /* Svg2Xml */,
+				59DABF572FA55A1600208C52 /* Vectify */,
 				59DABF562FA55A1600208C52 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,7 +64,7 @@
 		59DABF562FA55A1600208C52 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				59DABF552FA55A1600208C52 /* Svg2Xml.app */,
+				59DABF552FA55A1600208C52 /* Vectify.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,9 +72,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		59DABF542FA55A1600208C52 /* Svg2Xml */ = {
+		59DABF542FA55A1600208C52 /* Vectify */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 59DABF612FA55A1800208C52 /* Build configuration list for PBXNativeTarget "Svg2Xml" */;
+			buildConfigurationList = 59DABF612FA55A1800208C52 /* Build configuration list for PBXNativeTarget "Vectify" */;
 			buildPhases = (
 				59DABF512FA55A1600208C52 /* Sources */,
 				59DABF522FA55A1600208C52 /* Frameworks */,
@@ -86,13 +86,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				59DABF572FA55A1600208C52 /* Svg2Xml */,
+				59DABF572FA55A1600208C52 /* Vectify */,
 			);
-			name = Svg2Xml;
+			name = Vectify;
 			packageProductDependencies = (
 			);
-			productName = Svg2Xml;
-			productReference = 59DABF552FA55A1600208C52 /* Svg2Xml.app */;
+			productName = Vectify;
+			productReference = 59DABF552FA55A1600208C52 /* Vectify.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +110,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 59DABF502FA55A1600208C52 /* Build configuration list for PBXProject "Svg2Xml" */;
+			buildConfigurationList = 59DABF502FA55A1600208C52 /* Build configuration list for PBXProject "Vectify" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -124,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				59DABF542FA55A1600208C52 /* Svg2Xml */,
+				59DABF542FA55A1600208C52 /* Vectify */,
 			);
 		};
 /* End PBXProject section */
@@ -273,21 +273,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Svg2Xml/Svg2Xml.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Vectify/Vectify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Vectify;
+				INFOPLIST_KEY_CFBundleName = Vectify;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.av-feaster.Svg2Xml";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.avfeaster.vectify;
+				PRODUCT_NAME = Vectify;
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -299,21 +301,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = Svg2Xml/Svg2Xml.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Vectify/Vectify.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Vectify;
+				INFOPLIST_KEY_CFBundleName = Vectify;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.av-feaster.Svg2Xml";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = io.avfeaster.vectify;
+				PRODUCT_NAME = Vectify;
 				REGISTER_APP_GROUPS = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -323,7 +327,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		59DABF502FA55A1600208C52 /* Build configuration list for PBXProject "Svg2Xml" */ = {
+		59DABF502FA55A1600208C52 /* Build configuration list for PBXProject "Vectify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				59DABF5F2FA55A1800208C52 /* Debug */,
@@ -332,7 +336,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		59DABF612FA55A1800208C52 /* Build configuration list for PBXNativeTarget "Svg2Xml" */ = {
+		59DABF612FA55A1800208C52 /* Build configuration list for PBXNativeTarget "Vectify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				59DABF622FA55A1800208C52 /* Debug */,

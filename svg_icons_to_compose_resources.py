@@ -364,7 +364,7 @@ def parse_args() -> argparse.Namespace:
             "Examples:\n"
             "  python3 svg_icons_to_compose_resources.py\n"
             "  python3 svg_icons_to_compose_resources.py --input-dir ./svgs --output-dir ./out\n"
-            "  python3 svg_icons_to_compose_resources.py --config ci-svg2xml.json\n"
+            "  python3 svg_icons_to_compose_resources.py --config fixtures/vectify-ci.example.json\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )

@@ -11,9 +11,9 @@ struct AboutView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Svg2Xml")
+            Text("Vectify")
                 .font(.largeTitle.weight(.bold))
-            Text("VectorConverter — SVG to Android VectorDrawable XML for Compose resources.")
+            Text("SVG to XML Converter for Compose — Android VectorDrawable XML for composeResources/drawable.")
                 .foregroundStyle(AppTheme.secondary)
             Text("Version \(version) (\(build))")
             Divider()

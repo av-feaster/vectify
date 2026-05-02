@@ -136,7 +136,7 @@ final class ConversionViewModel {
             }
 
             let tmp = FileManager.default.temporaryDirectory
-                .appendingPathComponent("svg2xml-\(UUID().uuidString)", isDirectory: true)
+                .appendingPathComponent("vectify-\(UUID().uuidString)", isDirectory: true)
             let stagedStem = outXML.deletingPathExtension().lastPathComponent
             let stagedSVG = tmp.appendingPathComponent("\(stagedStem).svg")
             let vdOut = tmp.appendingPathComponent("vdout", isDirectory: true)

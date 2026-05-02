@@ -1,4 +1,4 @@
-# Stitch ↔ Svg2Xml alignment
+# Stitch ↔ Vectify alignment
 
 This document maps the **plan screens** (Stitch-oriented spec) to the **SwiftUI** implementation and shared tokens.
 

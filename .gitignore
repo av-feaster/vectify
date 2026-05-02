@@ -1,13 +1,16 @@
 # macOS
 .DS_Store
 
+# Local venv for icon compositing script
+.venv-icon/
+
 # Python
 __pycache__/
 *.py[cod]
 
-# Xcode (local DerivedData when using -derivedDataPath under Svg2Xml/)
-Svg2Xml/.derivedData/
-Svg2Xml/.derivedData-release/
+# Xcode (local DerivedData when using -derivedDataPath under Vectify/)
+Vectify/.derivedData/
+Vectify/.derivedData-release/
 
 # Xcode user-specific (keep machine-local schemes/settings out of the repo)
 **/xcuserdata/

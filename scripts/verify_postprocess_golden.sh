@@ -36,7 +36,7 @@ if ! diff -q "$EXPECTED" "$TMP_PY" >/dev/null; then
 fi
 
 xcrun swiftc \
-  "$ROOT/Svg2Xml/Svg2Xml/VectorDrawablePostProcessor.swift" \
+  "$ROOT/Vectify/Vectify/VectorDrawablePostProcessor.swift" \
   "$ROOT/scripts/postprocess_driver.swift" \
   -o "$TMP_BIN"
 "$TMP_BIN" "$BEFORE" "$TMP_SWIFT"

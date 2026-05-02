@@ -75,7 +75,7 @@ struct RootView: View {
                     }
                 }
                 .listStyle(.sidebar)
-                .navigationTitle("Svg2Xml")
+                .navigationTitle("Vectify")
                 .navigationSplitViewColumnWidth(min: 200, ideal: 240, max: 320)
             } detail: {
                 detailContent

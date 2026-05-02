@@ -1,10 +1,10 @@
-> **Repository copy** of the Svg2Xml macOS + DMG + Compose plan. Consolidated for this project (Cursor plan id: `svg2xml_dmg_compose_app`).
+> **Repository copy** of the Vectify macOS + DMG + Compose plan. Consolidated for this project (Cursor plan id: `svg2xml_dmg_compose_app`).
 
-# Svg2Xml — macOS DMG plan (restructured after critique)
+# Vectify — macOS DMG plan (restructured after critique)
 
 ## 1. Outcome
 
-Ship **Svg2Xml.app** (SwiftUI) inside a **DMG**, so designers and developers can convert **SVG → Android `vector` XML** suitable for **Kotlin Multiplatform Compose** `commonMain/composeResources/drawable/` (Android + Compose on iOS consume the same resource shape; feature subset on iOS is a support concern, not a different file format).
+Ship **Vectify.app** (SwiftUI) inside a **DMG**, so designers and developers can convert **SVG → Android `vector` XML** suitable for **Kotlin Multiplatform Compose** `commonMain/composeResources/drawable/` (Android + Compose on iOS consume the same resource shape; feature subset on iOS is a support concern, not a different file format).
 
 **Non-goals (unless explicitly added later):** Mac App Store listing (different entitlement and review bar), native iOS Asset Catalog workflow, automatic installation of Java/Node on the user’s machine.
 
@@ -19,7 +19,7 @@ Ship **Svg2Xml.app** (SwiftUI) inside a **DMG**, so designers and developers can
 | **“Any user” vs Java** | Vendoring **only** `bin`+`lib` still requires **a JVM** unless you bundle a JRE. | Explicit **distribution tiers** (§4); UI copy must not promise zero installs unless tier B. |
 | **GUI `PATH` / `JAVA_HOME`** | macOS apps see a **minimal environment**; `java` may work in Terminal but not from `Process`. | Set env in wrapper; probe `/usr/libexec/java_home`; document Temurin/Zulu. |
 | **Quarantine & executables** | Resource scripts may not be `+x`; downloaded vendor zips can be quarantined. | Build script sets permissions; ad-hoc sign vendor shell if needed; test **signed** Debug/Release. |
-| **App Sandbox** | Current [Svg2Xml/Svg2Xml/Svg2Xml.entitlements](../Svg2Xml/Svg2Xml/Svg2Xml.entitlements) is **read-only user files** — cannot write outputs or keep flexible subprocess behavior without more entitlements or **no sandbox**. | Decide early (§4); validate subprocess **before** UI polish. |
+| **App Sandbox** | Current [Vectify.entitlements](../Vectify/Vectify/Vectify.entitlements) is **read-only user files** — cannot write outputs or keep flexible subprocess behavior without more entitlements or **no sandbox**. | Decide early (§4); validate subprocess **before** UI polish. |
 | **Script vs app semantics** | [svg_icons_to_compose_resources.py](../svg_icons_to_compose_resources.py) **moves** SVGs out of the **input folder** into `icons-src/converted/` — surprising for arbitrary paths. | GUI defaults: **do not move** files from the input folder; optional “archive / move after success” for power users. |
 | **Two implementations of post-process** | Python `finalize_vector_xml_bytes` + Swift port risks **drift**. | Shared **golden-file tests**; treat diff failures as release blockers. |
 | **SVGO** | Nice for size; not required for correctness; pulls in **Node**. | MVP **SVGO off**; add optional path later. |
@@ -31,7 +31,7 @@ Ship **Svg2Xml.app** (SwiftUI) inside a **DMG**, so designers and developers can
 
 - Pipeline: SVGO (optional) → **vd-tool** `-c` → **post-process** ([finalize_vector_xml_bytes](../svg_icons_to_compose_resources.py)) → write XML.
 - Repo-centric paths in Python (`icons-src`, `composeApp/.../drawable`, move, archive) — **decouple** for the app (§8).
-- Starter UI: [Svg2Xml.xcodeproj](../Svg2Xml/Svg2Xml.xcodeproj), placeholder [ContentView.swift](../Svg2Xml/Svg2Xml/ContentView.swift).
+- Starter UI: [Vectify.xcodeproj](../Vectify/Vectify.xcodeproj), entry point [VectifyApp.swift](../Vectify/Vectify/VectifyApp.swift).
 
 ---
 
@@ -55,7 +55,7 @@ Ship **Svg2Xml.app** (SwiftUI) inside a **DMG**, so designers and developers can
 
 ```mermaid
 flowchart TB
-  subgraph app [Svg2Xml.app]
+  subgraph app [Vectify.app]
     UI[SwiftUI]
     VM[ConversionViewModel]
     JavaVD[JavaVdToolRunner]
@@ -88,11 +88,11 @@ flowchart TB
 | **3 — Optional SVGO** | Node detection, skip default, config file picker | Explicit opt-in; no regression on MVP tests |
 | **4 — Ship** | DMG layout, README, Developer ID, notarization, staple | Clean install on clean VM / second Mac |
 
-**Run in Xcode**: open [Svg2Xml/Svg2Xml.xcodeproj](../Svg2Xml/Svg2Xml.xcodeproj), scheme Svg2Xml, destination My Mac, ⌘R.
+**Run in Xcode**: open [Vectify/Vectify.xcodeproj](../Vectify/Vectify.xcodeproj), scheme Vectify, destination My Mac, ⌘R.
 
 ---
 
-## 7. Swift module checklist (Svg2Xml target)
+## 7. Swift module checklist (Vectify target)
 
 - `JavaVdToolRunner` — working directory, env, args; create `-out` dirs like Python.
 - `VectorDrawablePostProcessor` — port `finalize_vector_xml_bytes`.
