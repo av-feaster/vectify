@@ -1,0 +1,66 @@
+Vectify — third-party notices
+==============================
+
+This file summarizes third-party software used by or with Vectify. It is
+provided for distribution convenience and does not replace upstream
+license texts. Verify compliance before you ship.
+
+----------------------------------------------------------------------
+vd-tool (bundled in the macOS app)
+----------------------------------------------------------------------
+Project: vd-tool — Android Vector Drawable CLI packaging.
+Homepage: https://github.com/stasson/vd-tool
+npm:      https://www.npmjs.com/package/vd-tool
+
+The published npm package declares SPDX license identifier: MIT.
+
+Copyright and permission text: see the LICENSE file in the upstream
+vd-tool repository.
+
+Direct npm dependencies declared by vd-tool 4.0.2 (upstream; confirm
+in package-lock if you regenerate the bundle):
+  • execa — MIT — https://github.com/sindresorhus/execa
+  • upath — MIT — https://github.com/anodynos/upath
+
+----------------------------------------------------------------------
+Android Vector Drawable tooling (bundled JARs with vd-tool)
+----------------------------------------------------------------------
+The vd-tool distribution includes Java archives built from Android /
+Android Studio tooling sources (e.g. android.googlesource.com
+platform/tools/base vector-drawable tooling). Those artifacts are
+typically licensed under the Apache License, Version 2.0.
+
+Full license: https://www.apache.org/licenses/LICENSE-2.0
+
+Redistribution of binaries containing these JARs must comply with
+Apache-2.0 (including NOTICE requirements where applicable).
+
+----------------------------------------------------------------------
+SVGO (optional; invoked via Node on the user’s machine)
+----------------------------------------------------------------------
+When SVGO optimization is enabled, the app or Python CLI may invoke
+SVGO through Node (for example via npx). SVGO is MIT licensed.
+
+Project: https://github.com/svg/svgo
+
+SVGO is not vendored inside this git repository; your Node install is
+governed by npm’s terms and SVGO’s license.
+
+----------------------------------------------------------------------
+Java Development Kit (user-installed)
+----------------------------------------------------------------------
+A JDK (8+) is required for vd-tool. The JDK is supplied by the user
+(Temurin, Oracle, Azul, etc.) under that vendor’s license.
+
+----------------------------------------------------------------------
+Node.js (user-installed; optional SVGO / npx paths)
+----------------------------------------------------------------------
+Node.js is supplied by the user under the Node.js Foundation / OpenJS
+terms applicable to your distribution.
+
+----------------------------------------------------------------------
+Disclaimer
+----------------------------------------------------------------------
+This notice is informational. It is not legal advice. Confirm all
+licenses and attribution requirements with counsel before commercial
+distribution.

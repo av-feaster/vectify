@@ -3,6 +3,7 @@ import SwiftUI
 
 struct AboutView: View {
     @State private var footerShown = false
+    @State private var showThirdPartyNotices = false
 
     private var version: String {
         Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
@@ -58,7 +59,55 @@ struct AboutView: View {
                 footerShown = false
             }
         }
+        .sheet(isPresented: $showThirdPartyNotices) {
+            thirdPartyNoticesSheet
+        }
     }
+
+    private var thirdPartyNoticesSheet: some View {
+        NavigationStack {
+            ScrollView {
+                Text(AboutView.loadBundledThirdPartyNotices())
+                    .font(.system(size: 12))
+                    .foregroundStyle(AppTheme.onSurfaceVariant)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .textSelection(.enabled)
+                    .padding(20)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(AppTheme.canvas)
+            .navigationTitle("Third-party notices")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done") {
+                        showThirdPartyNotices = false
+                    }
+                    .keyboardShortcut(.defaultAction)
+                }
+            }
+        }
+        .frame(minWidth: 480, idealWidth: 560, minHeight: 420, idealHeight: 560)
+    }
+
+    private static func loadBundledThirdPartyNotices() -> String {
+        if let url = Bundle.main.url(forResource: "ThirdPartyNotices", withExtension: "txt"),
+           let text = try? String(contentsOf: url, encoding: .utf8),
+           !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        {
+            return text
+        }
+        return Self.thirdPartyNoticesFallback
+    }
+
+    private static let thirdPartyNoticesFallback = """
+Bundled ThirdPartyNotices.txt was not found in the app.
+
+See the NOTICE file in the Vectify repository:
+\(VectifyGitHubLinks.repositoryRootString)
+
+Summary: vd-tool npm package is MIT; bundled Android converter JARs are typically Apache-2.0. Optional SVGO is MIT and runs via your Node install.
+"""
 
     /// Pinned footer: stays visible while cards scroll; animates in/out with the view lifecycle.
     private var stickyFooterBar: some View {
@@ -164,18 +213,19 @@ struct AboutView: View {
                 Image(systemName: "doc.text")
                     .font(.system(size: 18, weight: .medium))
                     .foregroundStyle(AppTheme.primaryContainer)
-                Text("Writing")
+                Text("Writing ✍️")
                     .font(.system(size: 12, weight: .bold))
                     .foregroundStyle(AppTheme.onSurface)
-                    .tracking(0.4)
-                    .textCase(.uppercase)
+                    .tracking(0.35)
             }
-            Text("Longer posts about this stack and tooling—only if you want the story, not just the binary.")
-                .font(.system(size: 12))
-                .foregroundStyle(AppTheme.secondary)
-                .lineSpacing(3)
-                .fixedSize(horizontal: false, vertical: true)
-            Link("Open", destination: url)
+            Text(
+                "Same Vectify lore as the app—just with paragraphs, hot takes, and ~94% fewer modal dialogs. Medium: where binaries fear to tread. 😉"
+            )
+            .font(.system(size: 12))
+            .foregroundStyle(AppTheme.secondary)
+            .lineSpacing(3)
+            .fixedSize(horizontal: false, vertical: true)
+            Link("Read on Medium → ☕️", destination: url)
                 .font(.system(size: 12, weight: .semibold))
                 .tint(AppTheme.primary)
         }
@@ -238,12 +288,41 @@ struct AboutView: View {
                 .textCase(.uppercase)
 
             VStack(alignment: .leading, spacing: 8) {
-                aboutRow(title: "vd-tool", detail: "Bundled CLI (npm 4.0.2 layout) · MIT-style upstream license")
+                aboutRow(
+                    title: "vd-tool",
+                    detail: "Bundled npm package (MIT). Converter JARs ship from Android / AOSP tooling (Apache-2.0)."
+                )
                 hairline
                 aboutRow(title: "Java runtime", detail: "Install JDK 8+ separately (e.g. Temurin) for the bundled converter")
                 hairline
-                aboutRow(title: "SVGO (optional)", detail: "Uses Node on your machine when the toggle is enabled")
+                aboutRow(
+                    title: "SVGO (optional)",
+                    detail: "MIT-licensed; runs via Node on your machine when the toggle is enabled (not bundled in the app)."
+                )
             }
+
+            hairline
+
+            Button {
+                showThirdPartyNotices = true
+            } label: {
+                HStack(spacing: 10) {
+                    Image(systemName: "doc.plaintext")
+                        .font(.system(size: 15, weight: .medium))
+                        .foregroundStyle(AppTheme.primaryContainer)
+                    Text("View full third-party notices")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundStyle(AppTheme.primary)
+                    Spacer(minLength: 0)
+                    Image(systemName: "chevron.right")
+                        .font(.system(size: 11, weight: .semibold))
+                        .foregroundStyle(AppTheme.outline)
+                }
+                .padding(.vertical, 4)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .help("Same text as the NOTICE file in the repository, bundled for offline review.")
         }
         .padding(18)
         .frame(maxWidth: .infinity, alignment: .leading)
