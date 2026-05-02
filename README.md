@@ -4,6 +4,16 @@
 
 Vectify is a macOS tool to convert SVG files into Android VectorDrawable XML, optimized for Kotlin Multiplatform Compose (`composeResources/drawable`).
 
+## Screenshots
+
+<p align="center">
+  <img src="vectify.png" alt="Vectify macOS app — Convert workspace with sidebar, folders, and conversion controls" width="960" />
+</p>
+
+<p align="center">
+  <img src="vectify_1.png" alt="Vectify macOS app — additional UI view" width="960" />
+</p>
+
 ## Why we built this
 
 With **Kotlin Multiplatform** and **Compose Multiplatform**, you often want **one** shared resource tree—e.g. `composeApp/src/commonMain/composeResources/drawable/`—instead of maintaining separate “Android icons” and “iOS-equivalent” drops that drift out of sync. Put VectorDrawable XML there once; consume it from common code where your setup allows. The wrong place is still your Downloads folder, a temp directory named `final_final_v3`, or wherever Android Studio was feeling curious that day.
