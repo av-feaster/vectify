@@ -31,3 +31,6 @@ Vectify/.derivedData-release/
 
 # DMG / archive staging (scripts/build-dmg.sh)
 build/
+
+# Local exported .app folders (e.g. drag-out from Archive); ship zip via GitHub Releases only
+Vectify1.0(1)/
