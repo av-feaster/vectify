@@ -6,12 +6,22 @@ Vectify is a macOS tool to convert SVG files into Android VectorDrawable XML, op
 
 ## Screenshots
 
+All images live under [`screenshots/`](screenshots/).
+
 <p align="center">
-  <img src="vectify.png" alt="Vectify macOS app — Convert workspace with sidebar, folders, and conversion controls" width="960" />
+  <img src="screenshots/Screenshot%202026-05-03%20at%2004.42.04.png" alt="Vectify — screenshot 1" width="960" />
 </p>
 
 <p align="center">
-  <img src="vectify_1.png" alt="Vectify macOS app — additional UI view" width="960" />
+  <img src="screenshots/Screenshot%202026-05-03%20at%2004.42.25.png" alt="Vectify — screenshot 2" width="960" />
+</p>
+
+<p align="center">
+  <img src="screenshots/Screenshot%202026-05-03%20at%2004.42.33.png" alt="Vectify — screenshot 3" width="960" />
+</p>
+
+<p align="center">
+  <img src="screenshots/Screenshot%202026-05-03%20at%2004.42.56.png" alt="Vectify — screenshot 4" width="960" />
 </p>
 
 ## Why we built this
